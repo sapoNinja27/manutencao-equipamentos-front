@@ -1,9 +1,6 @@
 * {
     box-sizing: border-box
 }
-body{
-    background-color: rgb(237, 247, 250);
-}
 button{
     margin-top: 0px;
     display: block;
