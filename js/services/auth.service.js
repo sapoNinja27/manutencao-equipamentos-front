@@ -6,7 +6,14 @@ angular.module("sistemaManutencao").factory("authAPI", function (http, config) {
             responseType: 'text'
         });
 	};
-
+    var _successfulLogin= function (authorizationValue){
+        let tok = authorizationValue.substring(7);
+        let user={
+            token:tok,
+            email: this.jwtHelperService.decodeToken(tok).sub
+        };
+        this.storage.setLocalUser(user);
+    }
     // authenticate(creds : CredenciaisDTO) {
     //     return this.http.post(
     //         `${API_CONFIG.baseUrl}/login`, 
@@ -25,14 +32,7 @@ angular.module("sistemaManutencao").factory("authAPI", function (http, config) {
     //             responseType: 'text'
     //         });
     // }
-    // successfulLogin(authorizationValue:string){
-    //     let tok = authorizationValue.substring(7);
-    //     let user: LocalUser ={
-    //         token:tok,
-    //         email: this.jwtHelperService.decodeToken(tok).sub
-    //     };
-    //     this.storage.setLocalUser(user);
-    // }
+    
     // logout(){
     //     this.storage.setLocalUser(null);
     // }
@@ -41,5 +41,6 @@ angular.module("sistemaManutencao").factory("authAPI", function (http, config) {
     // }
 	return {
 		authenticate: _authenticate,
+        successfulLogin:_successfulLogin
 	};
 });
