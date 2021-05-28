@@ -4,24 +4,29 @@
 <div class="novoPedido">
     <form class="form">
         <div class="cliente">
-           <label>Cliente</label>
-           <input type="text">
-           <option >wq</option>
+            <div class="dropdown">
+                <input ng-model="nome" ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
+                 <div ng-if="show"  class="dropdown-content">
+                    <a href="" ng-repeat="cliente in clientesFiltrados" ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
+                 </div>
+               </div>
         </div>
         <div class="equipamentos">
             <div class="marcas">
                 <label>Marca</label>
                 <select>
                     <option value="1">Bosh</option>
-                    <option value="2">Philips</option>
+                    <option value="2">Novo</option>
                 </select>
+                <input type="text">
             </div>
             <div class="nomes">
                 <label>Equipamento</label>
                 <select>
                     <option value="1">Furadeira</option>
-                    <option value="2">Maquita</option>
+                    <option value="2">Novo</option>
                 </select>
+                <input type="text">
             </div>
         </div>
         <label>Problemas</label>
