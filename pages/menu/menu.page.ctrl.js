@@ -1,4 +1,20 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location) {
-	
-	
+	$scope.deslogar=function(){
+        $location.path("/home");
+    }
+    $scope.perfil=function(){
+        $location.path("/perfil");
+    }
+    $scope.novoPedido=function(){
+        $location.path("/adicionarPedido");
+    }
+    $scope.novoCliente=function(){
+        $location.path("/adicionarCliente");
+    }
+	$scope.tabelaPedido=function(){
+        $location.path("/listarPedidos");
+    }
+    $scope.tabelaCliente=function(){
+        $location.path("/listarClientes");
+    }
 });

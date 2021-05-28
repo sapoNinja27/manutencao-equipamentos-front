@@ -1,1 +1,1 @@
-angular.module("sistemaManutencao", [ "ngRoute"]);
+angular.module("sistemaManutencao", ["ngRoute"]);

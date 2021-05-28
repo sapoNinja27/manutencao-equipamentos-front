@@ -2,17 +2,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Manutenção de Equipamentos</title>
+	<!-- angular -->
 	<script src="lib/angular/angular.js"></script>
-
+	<!-- app -->
 	<link rel="stylesheet" type="text/css" href="app.css">
 	<script src="app.js"></script>
-	<script src="app.controller.js"></script>
-
+	<!-- homepage -->
 	<script src="pages/home/home.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/home/home.page.css">
-
+	<!-- menuPage -->
 	<script src="pages/menu/menu.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/menu/menu.page.css">
+	<!-- perfilPage -->
+	<script src="pages/perfil/perfil.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/perfil/perfil.page.css">
+	<!-- novoPedidoPage -->
+	<script src="pages/novoPedido/novo.pedido.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/novoPedido/novo.pedido.page.css">
+	<!-- novoClientePage -->
+	<script src="pages/novoCliente/novo.cliente.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/novoCliente/novo.cliente.page.css">
+	<!-- tabelaPedidoPage -->
+	<script src="pages/tabelaPedidos/tabela.pedidos.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/tabelaPedidos/tabela.pedidos.page.css">
+	<!-- tabelaClientePage -->
+	<script src="pages/tabelaClientes/tabela.clientes.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/tabelaClientes/tabela.clientes.page.css">
+
+	<!-- <script src="pages/perfil/perfil.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/perfil/perfil.page.css"> -->
+
+	
+	
 
 
 	<script src="js/config/configValue.js"></script>
@@ -21,17 +42,6 @@
 
 
 </head>
-<header>
-	<div class="toolbar">
-		<label class="title">Pagina atual</label>
-		<div class="user">
-			<label>Saponinja </label>
-			<label>Administrador</label>
-		</div>
-		<img class="icon" src="res/logo.png"></img>
-		<a href="https://www.google.com/" class="sair">Sair</a>
-	</div>
-</header>
 <body >
 	<div ng-view></div>
 </body>
