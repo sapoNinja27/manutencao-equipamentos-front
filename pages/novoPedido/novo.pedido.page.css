@@ -1,0 +1,40 @@
+.nomes{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.marcas{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.equipamentos{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.txtBox{
+    width: 400px;
+    margin-bottom: 30px;
+}
+.novoPedido{
+    display: flex;
+    justify-content:center;
+}
+h1{
+    padding-bottom: 50px;
+    display: flex;
+    justify-content:center;
+}
+.cliente{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
