@@ -4,33 +4,32 @@
 <div class="novoPedido">
     <form class="form">
         <div class="cliente">
-            <div class="dropdown">
-                <input ng-model="nome" ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
-                 <div ng-if="show"  class="dropdown-content">
-                    <a href="" ng-repeat="cliente in clientesFiltrados" ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
-                 </div>
-               </div>
+            <label>Cliente</label>
+            <input class="clienteInput" ng-model="nome"  ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
+            <div ng-if="show"  class="lista">
+               <a href="" ng-repeat="cliente in clientesFiltrados"  ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
+            </div>
         </div>
         <div class="equipamentos">
             <div class="marcas">
                 <label>Marca</label>
-                <select>
-                    <option value="1">Bosh</option>
-                    <option value="2">Novo</option>
+                <select ng-model="marca">
+                    <option ng-repeat="marca in marcas" ng-click="atualizarEquipamentos(marca.nome)">{{marca.nome}}</option>
+                    <option ng-click="atualizarEquipamentos()">Novo</option>
                 </select>
-                <input type="text">
+                <input type="text" ng-if="novo('marca')" ng-model="marca">
             </div>
             <div class="nomes">
                 <label>Equipamento</label>
-                <select>
-                    <option value="1">Furadeira</option>
-                    <option value="2">Novo</option>
+                <select ng-model="equipamento">
+                    <option ng-repeat="equipamento in newEquipamento" >{{equipamento.nome}}</option>
+                    <option >Novo</option>
                 </select>
-                <input type="text">
+                <input type="text" ng-if="novo('equipamento')" ng-model="equipamento">
             </div>
         </div>
         <label>Problemas</label>
-        <textarea class="txtBox" rows="4" cols="50"></textarea>
-        <button class="entrar" ng-click="adicionar(pedido)">Enviar</button>
+        <textarea ng-model="problemas" class="txtBox" rows="4" cols="50"></textarea>
+        <button class="entrar" ng-click="adicionar()">Enviar</button>
     </form>
 </div>

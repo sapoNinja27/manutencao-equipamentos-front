@@ -28,7 +28,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider) {
 		controller: "novoPedidoPageCtrl",
 		StyleSheet:"pages/novoPedido/novo.pedido.page.css",
 		resolve: {
-			
+			clientes: function (clienteService) {
+				return clienteService.getClientes();
+			},
+			marcas: function (marcaService) {
+				return marcaService.getMarcas();
+			},
+			equipamentos: function (equipamentoService) {
+				return equipamentoService.getEquipamentos();
+			}
 		}
 	});
 	$routeProvider.when("/adicionarCliente", {

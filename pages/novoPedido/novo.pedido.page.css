@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 20px;
+    padding-top: 40px;
 }
 .form{
     display: flex;
@@ -22,6 +23,7 @@
 .txtBox{
     width: 400px;
     margin-bottom: 30px;
+    font-family: Calibri;
 }
 .novoPedido{
     display: flex;
@@ -32,60 +34,35 @@ h1{
     display: flex;
     justify-content:center;
 }
-.cliente{
+.clienteInput{
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
 }
 
 
 
 
-
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-
-
-/* #myInput {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#myInput:focus {outline: 3px solid #ddd;} */
-
-.dropdown {
+.cliente {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-content {
+.lista {
   display: block;
   position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
+  background-color: rgb(237, 247, 250);
   overflow: auto;
-  border: 1px solid #ddd;
+  width: 100%;
+  border: 1px solid rgb(194, 204, 208);
   z-index: 1;
 }
 
-.dropdown-content a {
+.lista  a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.cliente a:hover { 
+  background-color: rgb(194, 204, 208);
+}
