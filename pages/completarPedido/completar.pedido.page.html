@@ -6,7 +6,10 @@
         <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
         <label>Problemas</label>
         <textarea ng-model="problemas" class="txtBox" rows="3" cols="50"></textarea>
-        <input type="file">
-        <button class="entrar" ng-click="adicionar()">Enviar</button>
+        <div class="adicionarImagens">
+            <label for="files" ng-model="imagens" class="addImagens">Adicionar imagens</label>
+        </div>
+        <input id="files"  style="visibility:hidden;" type="file" multiple>
+        <button class="entrar" ng-click="enviar()">Enviar</button>
     </form>
 </div>

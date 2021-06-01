@@ -1,1 +1,51 @@
-novo CLiente
+<h1>
+    Adicionar um Cliente
+</h1>
+<div class="formulario">
+    <form class="form">
+        <div class="sub-form">
+            <label>Nome</label>
+            <input class="input" ng-model="nome"  type="text"></input>
+        </div>
+        <div class="sub-form">
+            <label>Documentos:</label>
+            <div class="titulo">
+                <div class="sub">
+                    <label>RG</label>
+                    <input class="input" ng-model="rg"  type="text"></input>
+                </div>
+                <div class="sub">
+                    <label>CPF</label>
+                    <input class="input" ng-model="cpf"  type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="sub-form">
+            <label>Endereço:</label>
+            <div class="titulo">
+                <div class="sub">
+                    <label>Bairro</label>
+                    <input class="input" ng-model="bairro"  type="text"></input>
+                </div>
+                <div class="sub">
+                    <label>Cidade</label>
+                    <input class="input" ng-model="cidade"  type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="sub-form">
+            <label>Contato:</label>
+            <div class="titulo">
+                <div class="sub">
+                    <label>Email</label>
+                    <input class="input" ng-model="email"  type="text"></input>
+                </div>
+                <div class="sub">
+                    <label>Telefone</label>
+                    <input class="input" ng-model="telefone"  type="text"></input>
+                </div>
+            </div>
+        </div>
+        <button class="entrar" ng-click="adicionar()">Enviar</button>
+    </form>
+</div>

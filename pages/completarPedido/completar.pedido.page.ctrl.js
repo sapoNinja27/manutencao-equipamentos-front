@@ -2,5 +2,15 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
 	
     $scope.pedido=pedido.data;
     
+    $scope.problemas;
+    $scope.imagens;
+
+
+    $scope.enviar=function(){
+        let ordemAtualizada={
+            "problemasExtras":$scope.problema
+        }
+        //upar imagem no s3, upar o probleas com o link das imagens ao ordem,
+    }
 	
 });

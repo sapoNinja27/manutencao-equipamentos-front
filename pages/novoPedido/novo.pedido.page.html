@@ -1,35 +1,39 @@
 <h1>
     Solicitar Manutenção de Equipamento
 </h1>
-<div class="novoPedido">
+<div class="formulario">
     <form class="form">
-        <div class="cliente">
+        <div class="search-input">
             <label>Cliente</label>
-            <input class="clienteInput" ng-model="nome" ng-blur="clicouFora()" ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
+            <input class="input" ng-model="nome" ng-blur="clicouFora()" ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
             <div ng-if="show"  class="lista">
                <a href="" ng-repeat="cliente in clientesFiltrados" ng-mouseover="mouseEmcima(false)" ng-mouseleave="mouseEmcima(true)" ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
             </div>
         </div>
-        <div class="equipamentos">
-            <div class="marcas">
-                <label>Marca</label>
-                <select ng-model="marca">
-                    <option ng-repeat="marca in marcas" ng-click="atualizarEquipamentos(marca.nome)">{{marca.nome}}</option>
-                    <option ng-click="atualizarEquipamentos()">Novo</option>
-                </select>
-                <input type="text" ng-if="novo('marca')" ng-model="marca">
-            </div>
-            <div class="nomes">
-                <label>Equipamento</label>
-                <select ng-model="equipamento">
-                    <option ng-repeat="equipamento in newEquipamento" >{{equipamento.nome}}</option>
-                    <option >Novo</option>
-                </select>
-                <input type="text" ng-if="novo('equipamento')" ng-model="equipamento">
+        <div class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label>Marca</label>
+                    <select ng-model="marca">
+                        <option ng-repeat="marca in marcas" ng-click="atualizarEquipamentos(marca.nome)">{{marca.nome}}</option>
+                        <option ng-click="atualizarEquipamentos()">Novo</option>
+                    </select>
+                    <input type="text" ng-if="novo('marca')" ng-model="marca">
+                </div>
+                <div class="sub">
+                    <label>Equipamento</label>
+                    <select ng-model="equipamento">
+                        <option ng-repeat="equipamento in newEquipamento" >{{equipamento.nome}}</option>
+                        <option >Novo</option>
+                    </select>
+                    <input type="text" ng-if="novo('equipamento')" ng-model="equipamento">
+                </div>
             </div>
         </div>
-        <label>Problemas</label>
-        <textarea ng-model="problemas" class="txtBox" rows="4" cols="50"></textarea>
+        <div class="sub">
+            <label>Problemas</label>
+            <textarea ng-model="problemas" class="txtBox" rows="4" cols="50"></textarea>
+        </div> 
         <button class="entrar" ng-click="adicionar()">Enviar</button>
     </form>
 </div>

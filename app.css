@@ -2,3 +2,40 @@
 body{
     background-color: rgb(237, 247, 250);
 }
+.sub{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.sub-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.input{
+    width: 100%;
+}
+.formulario{
+    display: flex;
+    justify-content:center;
+}
+h1{
+    padding-bottom: 50px;
+    display: flex;
+    justify-content:center;
+}
+.txtBox{
+    width: 400px;
+    margin-bottom: 30px;
+    font-family: Calibri;
+}
