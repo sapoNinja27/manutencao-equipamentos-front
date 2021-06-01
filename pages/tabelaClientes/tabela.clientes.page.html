@@ -1,1 +1,17 @@
-tabela clientes
+<h1>
+    Tabela de Pedidos
+</h1>
+<div class="sub-form">
+    <label>Pesquisar</label>
+    <input class="input" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
+</div>
+<div class="tabela">
+    <div class="nome">
+        <label class="item-titulo"> Nome</label>
+        <a href="" class="item" ng-repeat="cliente in clientesFiltrados" ng-click="analizar(cliente.id)">{{cliente.nome}}</a>
+    </div>
+    <div class="documento">
+        <label class="item-titulo"> Documento</label>
+        <a href="" class="item" ng-repeat="cliente in clientesFiltrados" ng-click="analizar(cliente.id)">{{cliente.cpf}}</a>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<h1>
+    Alterar cliente
+</h1>
+<div class="novoPedido">
+    <form class="form">
+        <div class="sub-form">
+            <label>Nome</label>
+            <input class="input" ng-model="nome" placeholder="{{cliente.nome}}" type="text"></input>
+        </div>
+        <div class="sub-form">
+            <label>Endereço:</label>
+            <div class="titulo">
+                <div class="sub">
+                    <label>Bairro</label>
+                    <input class="input" ng-model="bairro" placeholder="{{cliente.endereco.bairro}}" type="text"></input>
+                </div>
+                <div class="sub">
+                    <label>Cidade</label>
+                    <input class="input" ng-model="cidade" placeholder="{{cliente.endereco.cidade}}" type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="sub-form">
+            <label>Contato:</label>
+            <div class="titulo">
+                <div class="sub">
+                    <label>Email</label>
+                    <input class="input" ng-model="email" placeholder="{{cliente.email}}" type="text"></input>
+                </div>
+                <div class="sub">
+                    <label>Telefone</label>
+                    <input class="input" ng-model="telefone" placeholder="{{cliente.telefone}}" type="text"></input>
+                </div>
+            </div>
+        </div>
+
+        <button class="entrar" ng-click="enviar()">Atualizar</button>
+        <button class="excluir" ng-click="excluir(cliente.id)">Excluir</button>
+    </form>
+</div>
