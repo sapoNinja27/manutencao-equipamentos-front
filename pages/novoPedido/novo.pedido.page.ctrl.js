@@ -5,17 +5,18 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.marcas=marcas.data;
     $scope.newEquipamento=[];
 
-
+    $scope.pdeFechar=true;
     $scope.clientesFiltrados=$scope.clientes;
     $scope.nome=""
     $scope.marca="";
     $scope.equipamento="";
     $scope.problemas="";
+
     $scope.adicionar=function(){
-        console.log("nome: "+ $scope.nome)
-        console.log("marca: "+ $scope.marca)
-        console.log("equipamento: "+ $scope.equipamento)
-        console.log("problemas: "+ $scope.problemas)
+        // console.log("nome: "+ $scope.nome)
+        // console.log("marca: "+ $scope.marca)
+        // console.log("equipamento: "+ $scope.equipamento)
+        // console.log("problemas: "+ $scope.problemas)
         let equip=null;
         let cli=null;
         for(let i=0;i<$scope.clientes.length;i++){
@@ -29,9 +30,9 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             cliente:cli
 
         }
-        console.log(ordem)
+        // console.log(ordem)
 		ordemService.addOrdem(ordem).then(function (data) {
-			//$location.path("/contatos");
+			$location.path("/menu");
 		});
     }
     $scope.atualizarEquipamentos=function(marca){
@@ -71,6 +72,15 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.selecionar=function(nome) {
         $scope.nome=nome;
         $scope.show=false;
+        $scope.pdeFechar=true;
+    }
+    $scope.mouseEmcima=function(expression){
+        $scope.pdeFechar=expression;
+    }
+    $scope.clicouFora=function(){
+        if($scope.pdeFechar){
+            $scope.show=false;
+        }
     }
     $scope.toggle=function() { 
         $scope.show=!$scope.show;

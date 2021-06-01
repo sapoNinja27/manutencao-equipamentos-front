@@ -52,7 +52,9 @@ angular.module("sistemaManutencao").config(function ($routeProvider) {
 		controller: "tabelaPedidosPageCtrl",
 		StyleSheet:"pages/tabelaPedidos/tabela.pedidos.page.css",
 		resolve: {
-			
+			pedidos: function (ordemService) {
+				return ordemService.getOrdens();
+			}
 		}
 	});
 	$routeProvider.when("/listarClientes", {
@@ -63,6 +65,16 @@ angular.module("sistemaManutencao").config(function ($routeProvider) {
 			
 		}
 	});
-	
+	$routeProvider.when("/pedido/:id_pedido", {
+		templateUrl: "pages/completarPedido/completar.pedido.page.html",
+		controller: "completarPedidoPageCtrl",
+		StyleSheet:"pages/completarPedido/completar.pedido.page.css",
+		resolve: {
+			pedido: function ($route,ordemService) {
+				return ordemService.getOrdem($route.current.params.id_pedido);
+			}
+		}
+	});
+
 	$routeProvider.otherwise({redirectTo: "/home"});
 });

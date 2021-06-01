@@ -5,9 +5,9 @@
     <form class="form">
         <div class="cliente">
             <label>Cliente</label>
-            <input class="clienteInput" ng-model="nome"  ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
+            <input class="clienteInput" ng-model="nome" ng-blur="clicouFora()" ng-click="toggle()" type="text" value="{{nome}}"  ng-keyup="filtrar(nome)"></input>
             <div ng-if="show"  class="lista">
-               <a href="" ng-repeat="cliente in clientesFiltrados"  ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
+               <a href="" ng-repeat="cliente in clientesFiltrados" ng-mouseover="mouseEmcima(false)" ng-mouseleave="mouseEmcima(true)" ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
             </div>
         </div>
         <div class="equipamentos">

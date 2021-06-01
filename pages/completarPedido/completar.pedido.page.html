@@ -1,0 +1,12 @@
+<h1>
+    Salvar Analize de Equipamento
+</h1>
+<div class="novoPedido">
+    <form class="form">
+        <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
+        <label>Problemas</label>
+        <textarea ng-model="problemas" class="txtBox" rows="3" cols="50"></textarea>
+        <input type="file">
+        <button class="entrar" ng-click="adicionar()">Enviar</button>
+    </form>
+</div>
