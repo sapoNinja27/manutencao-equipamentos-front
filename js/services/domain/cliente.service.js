@@ -8,4 +8,10 @@ angular.module("sistemaManutencao").service("clienteService", function ($http, c
 	this.addCliente = function (cliente) {
 		return $http.post(config.baseUrl + "/clientes", cliente);
 	};
+	this.update = function (cliente,id) {
+		return $http.put(config.baseUrl + "/clientes/"+id, cliente);
+	};
+	this.delete = function (id) {
+		return $http.delete(config.baseUrl + "/clientes/"+id);
+	};
 });

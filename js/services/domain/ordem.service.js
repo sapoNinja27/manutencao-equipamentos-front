@@ -5,7 +5,11 @@ angular.module("sistemaManutencao").service("ordemService", function ($http, con
 	this.getOrdens = function () {
 		return $http.get(config.baseUrl + "/ordens");
 	};
+	
 	this.getOrdem = function (id) {
 		return $http.get(config.baseUrl + "/ordens/"+id);
+	};
+	this.recusar = function (id) {
+		return $http.put(config.baseUrl + "/ordens/"+id+"/recusar");
 	};
 });

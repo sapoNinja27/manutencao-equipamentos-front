@@ -24,7 +24,7 @@
   width: 400px;
 }
 
-.novoPedido{
+.box{
   display: flex;
   justify-content:center;
 }

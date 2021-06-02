@@ -1,15 +1,56 @@
 <h1>
     Salvar Analize de Equipamento
 </h1>
-<div class="novoPedido">
+<div class="box">
     <form class="form">
         <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
-        <label>Problemas</label>
-        <textarea ng-model="problemas" class="txtBox" rows="3" cols="50"></textarea>
-        <div class="adicionarImagens">
-            <label for="files" ng-model="imagens" class="addImagens">Adicionar imagens</label>
+        
+        <div class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label>Cliente: {{pedido.cliente.nome}}</label>
+                </div>
+            </div>
         </div>
-        <input id="files"  style="visibility:hidden;" type="file" multiple>
-        <button class="entrar" ng-click="enviar()">Enviar</button>
+        <div class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label >Problema: {{pedido.problema}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label >Estado: {{pedido.estado}}</label>
+                </div>
+            </div>
+        </div>
+        <div   ng-if="analista()" class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label >Adicionar Analize:</label>
+                    <textarea ng-model="problemas" class="txtBox" rows="3" cols="50"></textarea>
+                </div>
+            </div>
+            <div class="adicionarImagens">
+                <label for="files" ng-model="imagens" class="addImagens">Adicionar imagens</label>
+            </div>
+            <input id="files"  style="visibility:hidden;" type="file" multiple>
+            <button class="entrar"  ng-click="enviar()">Enviar</button>
+            <button class="excluir"  ng-click="recusar(pedido.id)">Recusar</button>
+        </div>
+        <div   ng-if="tecnico()" class="sub-form">
+            <div class="titulo">
+                <div class="sub">
+                    <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
+                </div>
+            </div>
+            <input id="files"  style="visibility:hidden;" type="file" multiple>
+            <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
+        </div>
+        <div>
+            
+            </div>
     </form>
 </div>

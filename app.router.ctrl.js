@@ -1,4 +1,6 @@
-angular.module("sistemaManutencao").config(function ($routeProvider) {
+angular.module("sistemaManutencao").config(function ($routeProvider,$locationProvider) {
+	$locationProvider.hashPrefix('');
+	
 	$routeProvider.when("/home", {
 		templateUrl: "pages/home/home.page.html",
 		controller: "homePageCtrl",
