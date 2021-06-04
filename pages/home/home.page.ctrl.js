@@ -1,15 +1,11 @@
-angular.module("sistemaManutencao").controller("homePageCtrl", function ($scope, $location) {
+angular.module("sistemaManutencao").controller("homePageCtrl", function ($scope, $location,authAPI) {
 	
 	$scope.login = function (credenciais) {
 	  
-		$location.path("/menu");
-		// if(credenciais.usuario!=null && credenciais.senha !=null){
-			// console.log(credenciais.usuario)
-			// console.log(credenciais.senha)
-			// authAPI.authenticate(credenciais).subscribe(response=>{
-			// 	authAPI.successfulLogin(response.headers.get("Authorization"))
-			// });
-		// 	$location.path("/menu");
-		// }
+
+		authAPI.authenticate(credenciais).then(function (data) {
+			authAPI.successfulLogin(data.headers("Authorization"))
+			$location.path("/menu");
+		});
 	};
 });

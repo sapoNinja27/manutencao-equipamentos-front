@@ -6,7 +6,9 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		controller: "homePageCtrl",
 		StyleSheet:"pages/home/home.page.css",
 		resolve: {
-			
+			localUser: function (storageAPI) {
+				return storageAPI.setLocalUser(null);
+			},
 		}
 	});
 	$routeProvider.when("/menu", {

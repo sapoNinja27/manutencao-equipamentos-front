@@ -4,6 +4,9 @@
 	<title>Manutenção de Equipamentos</title>
 	<!-- angular -->
 	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+
+
 	<!-- app -->
 	<link rel="stylesheet" type="text/css" href="app.css">
 	<script src="app.js"></script>
@@ -35,12 +38,27 @@
 	<script src="pages/cliente/cliente.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/cliente/cliente.page.css">
 
-
+	
 	<!-- services -->
 	<script src="js/services/domain/cliente.service.js"></script>
 	<script src="js/services/domain/equipamento.service.js"></script>
 	<script src="js/services/domain/marca.service.js"></script>
 	<script src="js/services/domain/ordem.service.js"></script>
+	<script src="js/services/auth.service.js"></script>
+	<script src="js/services/storage.service.js"></script>
+	<script src="js/config/storage.keys.js"></script>
+	<script src="js/config/configValue.js"></script>
+	<script src="app.router.ctrl.js"></script>
+
+
+	<script src="js/interceptors/auth.interceptor.js"></script>
+	<script src="js/config/InterceptorsConfig.js"></script>
+
+	
+	<!-- <script src="js/interceptors/auth-interceptor.js"></script> -->
+
+
+
 	<!-- <script src="pages/perfil/perfil.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/perfil/perfil.page.css"> -->
 
@@ -48,9 +66,7 @@
 	
 
 
-	<script src="js/config/configValue.js"></script>
-	<script src="app.router.ctrl.js"></script>
-	<script src="lib/angular/angular-route.js"></script>
+	
 
 
 </head>

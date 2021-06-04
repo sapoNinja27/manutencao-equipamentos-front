@@ -1,32 +1,19 @@
-angular.module("sistemaManutencao").service("storageAPI", function ($http, config) {
+angular.module("sistemaManutencao").service("storageAPI", function ( STORAGE_KEYS) {
 	
-    // authenticate(creds : CredenciaisDTO) {
-    //     return this.http.post(
-    //         `${API_CONFIG.baseUrl}/login`, 
-    //         creds,
-    //         {
-    //             observe: 'response',
-    //             responseType: 'text'
-    //         });
-    // }
-    // refreshToken() {
-    //     return this.http.post(
-    //         `${API_CONFIG.baseUrl}/auth/refresh_token`, 
-    //         {},
-    //         {
-    //             observe: 'response',
-    //             responseType: 'text'
-    //         });
-    // }
-    
-    // logout(){
-    //     this.storage.setLocalUser(null);
-    // }
-    // checkUser(){
-    //     return this.storage.getLocalUser();
-    // }
-	return {
-		authenticate: _authenticate,
-        successfulLogin:_successfulLogin
-	};
+
+    this.getLocalUser=function(){
+        let usr = localStorage.getItem(STORAGE_KEYS.localUser);
+        if(usr==null){
+            return null;
+        }else{
+            return JSON.parse(usr);
+        }
+    };
+    this.setLocalUser=function(obj){
+        if(obj == null){
+            localStorage.removeItem(STORAGE_KEYS.localUser);
+        }else{
+            localStorage.setItem(STORAGE_KEYS.localUser,JSON.stringify(obj));
+        }
+    };
 });
