@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope, $location,ordemService, clientes,equipamentos,marcas) {
+angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope, $location,ordemService, clientes,equipamentos,marcas,storageAPI) {
 	
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
@@ -30,9 +30,8 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             cliente:cli
 
         }
-        // console.log(ordem)
 		ordemService.addOrdem(ordem).then(function (data) {
-			$location.path("/menu");
+			$location.path("/menu/"+storageAPI.getLocalUser().nome);
 		});
     }
     $scope.atualizarEquipamentos=function(marca){

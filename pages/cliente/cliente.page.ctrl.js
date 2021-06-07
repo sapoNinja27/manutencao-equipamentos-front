@@ -5,10 +5,8 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function ($sco
 
     $scope.excluir=function(id){
         clienteService.delete(id).then(function (data) {
-			$location.path("/menu");
-		}).catch(function(){
-            
-        });
+			$location.path("/listarClientes");
+		});
     }
     $scope.enviar=function(){
         
