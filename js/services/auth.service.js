@@ -7,12 +7,30 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
         let tok = authorizationValue.substring(7);
         let user={
             token:tok,
+            perfis:null,
+            nome:null
             // email: jwtHelper.decodeToken(tok)
         };
-        console.log(user)
         storageAPI.setLocalUser(user);
     }
-    
+    this.atualizarUsuario=function(usuario){
+        let perfil=""
+        usuario.perfil.forEach(p => {
+            if(p=="ADMIN" ){
+                perfil="ADMIN"
+            }else{
+                if(perfil!="ADMIN" ){
+                    perfil=usuario.perfil
+                }
+            }
+        });
+        let user={
+            token:storageAPI.getLocalUser().token,
+            perfil:perfil,
+            nome:usuario.nome
+        };
+        storageAPI.setLocalUser(user);
+    }
     this.refreshToken=function() {
         return $http.post(config.baseUrl + "/auth/refresh_token",{},);
     }

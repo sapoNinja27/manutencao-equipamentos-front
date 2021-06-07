@@ -11,12 +11,14 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			},
 		}
 	});
-	$routeProvider.when("/menu", {
+	$routeProvider.when("/menu/:usuario_nome", {
 		templateUrl: "pages/menu/menu.page.html",
 		controller: "menuPageCtrl",
 		StyleSheet:"pages/menu/menu.page.css",
 		resolve: {
-			
+			usuario: function ($route,usuarioService) {
+				return (usuarioService.getUsuario($route.current.params.usuario_nome));
+			},
 		}
 	});
 	$routeProvider.when("/perfil", {

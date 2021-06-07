@@ -2,7 +2,6 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function ($sco
 	
     $scope.cliente=cliente.data;
     
-    
 
     $scope.excluir=function(id){
         clienteService.delete(id).then(function (data) {

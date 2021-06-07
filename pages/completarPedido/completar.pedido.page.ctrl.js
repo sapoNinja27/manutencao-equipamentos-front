@@ -1,10 +1,10 @@
-angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope, $location,pedido,ordemService) {
+angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope, $location,pedido,ordemService,storageAPI) {
 	
     $scope.pedido=pedido.data;
     
     $scope.problemas;
     $scope.imagens;
-    let user="ADMIN"
+    let user=storageAPI.getLocalUser().perfil;
 
     $scope.enviar=function(){
         let ordemAtualizada={

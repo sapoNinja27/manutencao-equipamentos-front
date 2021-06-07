@@ -1,8 +1,8 @@
 <div class="toolbar" >
     <label class="title">Manutenção de Equipamentos</label>
     <div class="user">
-        <a href="" ng-click="perfil()", class="username">Saponinja </a>
-        <label title="Acesso total as funções">Administrador</label>
+        <a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
+        <label title="{{descricao}}">{{cargo}}</label>
     </div>
     <img class="icon" src="res/logo.png"></img>
     <a href="" ng-click="deslogar()" class="sair">Sair</a>
@@ -10,11 +10,8 @@
 
 
 <div class="options">
-    <button class="option" ng-click="novoPedido()">Novo Pedido</button>
-    <button class="option" ng-click="tabelaPedido()">Tabela de Pedidos</button>
-    <button class="option" ng-click="novoCliente()">Novo Cliente</button>
-    <button class="option" ng-click="tabelaCliente()">Tabela de Clientes</button>
+    <button class="option" ng-if="acessoRestrito()" ng-click="novoPedido()">Novo Pedido</button>
+    <button class="option"  ng-click="tabelaPedido()">Tabela de Pedidos</button>
+    <button class="option" ng-if="acessoRestrito()" ng-click="novoCliente()">Novo Cliente</button>
+    <button class="option" ng-if="acessoRestrito()" ng-click="tabelaCliente()">Tabela de Clientes</button>
 </div>
-
-nesse html aqui eu tenho q fazer o menu com as opçoes secretaria{vizualizar pedidos,   fazer um novo pedido e alterar clientes},
-analista{vizualisar pedidos e adicionar os campos extras}, tecnico{vai poder vizualisar os pedidos e modificar o estado para terminado}

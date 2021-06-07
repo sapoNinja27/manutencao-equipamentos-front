@@ -1,10 +1,10 @@
-angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function ($scope, $location,pedidos) {
+angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function ($scope, $location,pedidos,storageAPI) {
 	$scope.pedidos=pedidos.data;
     
-
+    
     $scope.pedidosAbertos=$scope.pedidos;
     $scope.pedidosFechados;
-    let user= "ADMIN"
+    let user= storageAPI.getLocalUser().perfil;
 
 
     $scope.show=function(estado){
