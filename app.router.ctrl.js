@@ -37,8 +37,8 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			clientes: function (clienteService) {
 				return clienteService.getClientes();
 			},
-			marcas: function (marcaService) {
-				return marcaService.getMarcas();
+			marcas: function (equipamentoService) {
+				return equipamentoService.getMarcas();
 			},
 			equipamentos: function (equipamentoService) {
 				return equipamentoService.getEquipamentos();

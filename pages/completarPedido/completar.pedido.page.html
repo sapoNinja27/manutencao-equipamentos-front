@@ -26,11 +26,11 @@
                 </div>
             </div>
         </div>
-        <div   ng-if="analista()" class="sub-form">
+        <div   ng-show="analista()" class="sub-form">
             <div class="titulo">
                 <div class="sub">
                     <label >Adicionar Analize:</label>
-                    <textarea ng-model="problemas" class="txtBox" rows="3" cols="50"></textarea>
+                   <textarea ng-model="analize" class="txtBox" rows="3"  cols="50"></textarea>
                 </div>
             </div>
             <div class="adicionarImagens">
@@ -40,7 +40,7 @@
             <button class="entrar"  ng-click="enviar()">Enviar</button>
             <button class="excluir"  ng-click="recusar(pedido.id)">Recusar</button>
         </div>
-        <div   ng-if="tecnico()" class="sub-form">
+        <div   ng-if="pedido.state!='ANALIZE_PENDENTE'" class="sub-form">
             <div class="titulo">
                 <div class="sub">
                     <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
