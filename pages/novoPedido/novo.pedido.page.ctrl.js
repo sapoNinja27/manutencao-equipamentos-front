@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope, $location,ordemService, clientes,equipamentos,marcas,storageAPI) {
+angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope, $location,ordemService,equipamentoService, clientes,equipamentos,marcas,storageAPI) {
 	
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
@@ -13,11 +13,6 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.problemas="";
 
     $scope.adicionar=function(){
-        // console.log("nome: "+ $scope.nome)
-        // console.log("marca: "+ $scope.marca)
-        // console.log("equipamento: "+ $scope.equipamento)
-        // console.log("problemas: "+ $scope.problemas)
-        let equip=null;
         let cli=null;
         for(let i=0;i<$scope.clientes.length;i++){
             if($scope.clientes[i].nome==$scope.nome){
@@ -25,14 +20,43 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             }
         }
         ordem={
-            equipamento: 1,
+            equipamento: $scope.equipamento,
+            marca:$scope.marca,
             problema:$scope.problemas,
             cliente:cli
 
         }
-		ordemService.addOrdem(ordem).then(function (data) {
-			$location.path("/menu/"+storageAPI.getLocalUser().nome);
-		});
+        if($scope.marca=="Novo"){
+            let novaMarca={
+                nome:$scope.marcaNew,
+                equipamento: $scope.equipamentoNew
+            }
+            equipamentoService.addMarca(novaMarca).then(function (data) {
+                ordem.marca=novaMarca.nome;
+                ordem.equipamento=novaMarca.equipamento;
+                ordemService.addOrdem(ordem).then(function (data) {
+                    $location.path("/menu/"+storageAPI.getLocalUser().nome);
+                });
+            });
+        }
+        if($scope.marca!="Novo" && $scope.equipamento=="Novo"){
+            let novoEquipamento={
+                nome:$scope.equipamentoNew,
+                marca: $scope.marca
+            }
+            equipamentoService.addEquipamento(novoEquipamento).then(function (data) {
+                ordem.equipamento=novoEquipamento.nome;
+                ordemService.addOrdem(ordem).then(function (data) {
+                    $location.path("/menu/"+storageAPI.getLocalUser().nome);
+                });
+            });
+        }
+        if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
+            ordemService.addOrdem(ordem).then(function (data) {
+                $location.path("/menu/"+storageAPI.getLocalUser().nome);
+            });
+        }
+        
     }
     $scope.atualizarEquipamentos=function(marca){
         let equipamento=""

@@ -44,6 +44,9 @@
             <div class="titulo">
                 <div class="sub">
                     <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
+                    <div class="titulo">
+                        <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" src="{{foto}}">
+                    </div>
                 </div>
             </div>
             <input id="files"  style="visibility:hidden;" type="file" multiple>

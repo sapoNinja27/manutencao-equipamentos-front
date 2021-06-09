@@ -18,7 +18,7 @@
                         <option ng-repeat="marca in marcas" ng-click="atualizarEquipamentos(marca.nome)">{{marca.nome}}</option>
                         <option ng-click="atualizarEquipamentos()">Novo</option>
                     </select>
-                    <input type="text" ng-if="novo('marca')" ng-model="marca">
+                    <input type="text" ng-show="novo('marca')" ng-model="marcaNew">
                 </div>
                 <div class="sub">
                     <label>Equipamento</label>
@@ -26,7 +26,7 @@
                         <option ng-repeat="equipamento in newEquipamento" >{{equipamento.nome}}</option>
                         <option >Novo</option>
                     </select>
-                    <input type="text" ng-if="novo('equipamento')" ng-model="equipamento">
+                    <input type="text" ng-show="novo('equipamento')" ng-model="equipamentoNew">
                 </div>
             </div>
         </div>
