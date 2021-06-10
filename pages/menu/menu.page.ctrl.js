@@ -1,5 +1,5 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,usuario,storageAPI,authAPI) {
-    if(storageAPI.getLocalUser().perfis ==null){
+    if(storageAPI.getLocalUser().perfil ==null){
         authAPI.atualizarUsuario(usuario.data);
     }
     $scope.user=storageAPI.getLocalUser();

@@ -12,6 +12,7 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
          let newCliente={
             "nome": $scope.nome,
             "telefone": $scope.telefone,
+            "rg":$scope.rg,
             "email": $scope.email,
             "cpf": $scope.cpf,
             "bairro": $scope.bairro,

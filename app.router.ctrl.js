@@ -21,6 +21,16 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			},
 		}
 	});
+	$routeProvider.when("/menu", {
+		templateUrl: "pages/menu/menu.page.html",
+		controller: "menuPageCtrl",
+		StyleSheet:"pages/menu/menu.page.css",
+		resolve: {
+			usuario: function (storageAPI) {
+				return (storageAPI.getLocalUser());
+			},
+		}
+	});
 	$routeProvider.when("/perfil", {
 		templateUrl: "pages/perfil/perfil.page.html",
 		controller: "perfilPageCtrl",

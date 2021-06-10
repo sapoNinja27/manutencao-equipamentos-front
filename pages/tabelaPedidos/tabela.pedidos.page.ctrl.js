@@ -63,6 +63,7 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
     }
     $scope.analizar=function(pedido_id){
         $location.path("/pedido/"+pedido_id);
+        $location.replace();
     }
 
     

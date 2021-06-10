@@ -50,9 +50,11 @@
 	<script src="js/config/configValue.js"></script>
 	<script src="app.router.ctrl.js"></script>
 	<script src="js/services/domain/usuario.service.js"></script>
+	<script src="js/services/image.service.js"></script>
 
 
 	<script src="js/interceptors/auth.interceptor.js"></script>
+	<!-- <script src="js/interceptors/cors.validator.interceptor.js"></script> -->
 	<script src="js/config/InterceptorsConfig.js"></script>
 
 	
@@ -72,15 +74,6 @@
 
 </head>
 <body >
-	<!-- <div class="toolbar" ng-controller="menuCtrl">
-		<label class="title">Manutenção de Equipamentos</label>
-		<div class="user">
-			<a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
-			<label title="{{descricao}}">{{cargo}}</label>
-		</div>
-		<img class="icon" src="res/logo.png"></img>
-		<a href="" ng-click="deslogar()" class="sair">Sair</a>
-	</div> -->
 	<div ng-view></div>
 </body>
 </html>

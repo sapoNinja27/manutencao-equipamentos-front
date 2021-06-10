@@ -15,6 +15,14 @@ angular.module("sistemaManutencao").service("ordemService", function ($http, con
 	this.atualizar = function (id,ordem) {
 		return $http.put(config.baseUrl + "/ordens/"+id,ordem);
 	};
+	this.addFotos = function (id,fotos) {
+		var fd = new FormData();
+        fd.append('file', fotos);
+        return $http.post(config.baseUrl + "/ordens/"+id+"/imagens", fd, {
+			transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        });
+	};
 	this.analizar = function (id,ordem) {
 		return $http.put(config.baseUrl + "/ordens/"+id+"/analizar",ordem);
 	};

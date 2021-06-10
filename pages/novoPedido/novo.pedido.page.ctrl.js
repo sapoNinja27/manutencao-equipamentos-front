@@ -35,7 +35,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                 ordem.marca=novaMarca.nome;
                 ordem.equipamento=novaMarca.equipamento;
                 ordemService.addOrdem(ordem).then(function (data) {
-                    $location.path("/menu/"+storageAPI.getLocalUser().nome);
+                    $location.path("/menu");
                 });
             });
         }
@@ -47,13 +47,13 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             equipamentoService.addEquipamento(novoEquipamento).then(function (data) {
                 ordem.equipamento=novoEquipamento.nome;
                 ordemService.addOrdem(ordem).then(function (data) {
-                    $location.path("/menu/"+storageAPI.getLocalUser().nome);
+                    $location.path("/menu");
                 });
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
             ordemService.addOrdem(ordem).then(function (data) {
-                $location.path("/menu/"+storageAPI.getLocalUser().nome);
+                $location.path("/menu");
             });
         }
         

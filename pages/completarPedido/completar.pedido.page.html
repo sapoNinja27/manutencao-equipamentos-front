@@ -2,6 +2,13 @@
     Salvar Analize de Equipamento
 </h1>
 <div class="box">
+
+   
+
+
+
+
+
     <form class="form">
         <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
         
@@ -34,9 +41,9 @@
                 </div>
             </div>
             <div class="adicionarImagens">
-                <label for="files" ng-model="imagens" class="addImagens">Adicionar imagens</label>
+                <label for="img"  class="addImagens">Adicionar imagens</label>
             </div>
-            <input id="files"  style="visibility:hidden;" type="file" multiple>
+            <input id="img"  style="visibility:hidden;" type="file" multiple>
             <button class="entrar"  ng-click="enviar()">Enviar</button>
             <button class="excluir"  ng-click="recusar(pedido.id)">Recusar</button>
         </div>
@@ -49,11 +56,9 @@
                     </div>
                 </div>
             </div>
-            <input id="files"  style="visibility:hidden;" type="file" multiple>
             <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
-        </div>
-        <div>
             
-            </div>
+        </div>
     </form>
+    
 </div>
