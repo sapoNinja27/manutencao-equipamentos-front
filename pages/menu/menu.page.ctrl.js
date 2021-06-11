@@ -1,5 +1,5 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,$scope, $location,usuario,storageAPI,authAPI) {
-    if(storageAPI.getLocalUser().perfil ==null){
+    if(storageAPI.getLocalUser().perfil==null){
         authAPI.atualizarUsuario(usuario.data);
         $route.reload();
     }
@@ -18,6 +18,10 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,
     $scope.tabelaCliente=function(){
         $location.path("/listarClientes");
     }
+    $scope.configurarUser=function(){
+        $location.path("/configUser");
+    }
+    
     $scope.acessoRestrito=function(){
         let aprovado = false;
         if($scope.user.perfil=="ADMIN"){
@@ -28,6 +32,14 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,
                     aprovado= true;
                 }
             });
+        }
+        return aprovado;
+        
+    }
+    $scope.adm=function(){
+        let aprovado = false;
+        if($scope.user.perfil=="ADMIN"){
+            aprovado = true;
         }
         return aprovado;
         

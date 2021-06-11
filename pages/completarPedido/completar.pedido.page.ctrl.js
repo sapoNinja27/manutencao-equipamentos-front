@@ -11,7 +11,8 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
 
     $scope.enviar=function(){
         let ordemAtualizada={
-            "problemasExtras":$scope.analize
+            "problemasExtras":$scope.analize,
+            "valor":$scope.valor
         }
         //aqui ta calculando quantos arquivos vai vir no file
         let cont=-1;

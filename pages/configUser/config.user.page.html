@@ -1,0 +1,15 @@
+
+<div class="sub-form">
+    <label>Pesquisar</label>
+    <input class="input" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
+</div>
+<div class="tabela">
+    <div class="nome">
+        <label class="item-titulo"> Usuario</label>
+        <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario.id)">{{usuario.nome}}</a>
+    </div>
+    <div class="documento">
+        <label class="item-titulo"> Cargo</label>
+        <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario.id)">{{usuario.perfil[0]}}</a>
+    </div>
+</div>

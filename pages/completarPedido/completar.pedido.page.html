@@ -1,6 +1,4 @@
-<h1>
-    Salvar Analize de Equipamento
-</h1>
+
 <div class="box">
 
    
@@ -40,6 +38,12 @@
                    <textarea ng-model="analize" class="txtBox" rows="3"  cols="50"></textarea>
                 </div>
             </div>
+            <div class="titulo">
+                <div class="sub">
+                    <label >Valor :</label>
+                    <input class="input" ng-model="valor"  type="text"></input>
+                </div>
+            </div>
             <div class="adicionarImagens">
                 <label for="img"  class="addImagens">Adicionar imagens</label>
             </div>
@@ -51,7 +55,7 @@
             <div class="titulo">
                 <div class="sub">
                     <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
-                    
+                    <label >Valor: {{pedido.valor| currency:'R$'}}</label>
                 </div>
             </div>
             

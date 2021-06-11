@@ -38,7 +38,9 @@
 	<!-- editar cliente -->
 	<script src="pages/cliente/cliente.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/cliente/cliente.page.css">
-
+	<!-- configurar usuarios -->
+	<script src="pages/configUser/config.user.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/configUser/config.user.page.css">
 	
 	<!-- services -->
 	<script src="js/services/domain/cliente.service.js"></script>
@@ -71,7 +73,7 @@
 </head>
 <body >
 	<div class="toolbar" ng-show="home()" ng-controller="menuCtrl">
-		<label class="title">Manutenção de Equipamentos</label>
+		<label class="title">{{pagina}}</label>
 		<div class="user">
 			<a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
 			<label title="{{descricao}}">{{cargo}}</label>

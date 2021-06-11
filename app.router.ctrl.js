@@ -103,6 +103,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			}
 		}
 	});
-
+	$routeProvider.when("/configUser", {
+		templateUrl: "pages/configUser/config.user.page.html",
+		controller: "configUserPageCtrl",
+		StyleSheet:"pages//configUser/config.user.page.css",
+		resolve: {
+			usuarios: function (usuarioService) {
+				return usuarioService.getUsuarios();
+			}
+		}
+	});
 	$routeProvider.otherwise({redirectTo: "/home"});
 });
