@@ -33,7 +33,7 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
                 }
             })
             .catch(function(error){
-                console.log(error)
+                
             })
         }
     }
@@ -41,6 +41,8 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         ordemService.finalizar($scope.pedido.id).then(function(data){
 			$location.path("/listarPedidos");
             $location.replace();
+        }).catch(function(){
+            
         })
     }
     $scope.analista=function(){

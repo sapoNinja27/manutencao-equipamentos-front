@@ -7,7 +7,9 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function ($sco
         clienteService.delete(id).then(function (data) {
 			$location.path("/listarClientes");
             $location.replace();
-		});
+		}).catch(function(){
+            
+        });
     }
     $scope.enviar=function(){
         

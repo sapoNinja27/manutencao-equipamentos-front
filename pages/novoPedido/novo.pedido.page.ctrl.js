@@ -36,6 +36,8 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                 ordem.equipamento=novaMarca.equipamento;
                 ordemService.addOrdem(ordem).then(function (data) {
                     $location.path("/menu");
+                }).catch(function(){
+            
                 });
             });
         }
@@ -48,12 +50,16 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                 ordem.equipamento=novoEquipamento.nome;
                 ordemService.addOrdem(ordem).then(function (data) {
                     $location.path("/menu");
+                }).catch(function(){
+            
                 });
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
             ordemService.addOrdem(ordem).then(function (data) {
                 $location.path("/menu");
+            }).catch(function(){
+            
             });
         }
         

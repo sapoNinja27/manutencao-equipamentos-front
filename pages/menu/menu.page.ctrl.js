@@ -1,32 +1,11 @@
-angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,usuario,storageAPI,authAPI) {
+angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,$scope, $location,usuario,storageAPI,authAPI) {
     if(storageAPI.getLocalUser().perfil ==null){
         authAPI.atualizarUsuario(usuario.data);
+        $route.reload();
     }
     $scope.user=storageAPI.getLocalUser();
     
-    if($scope.user.perfil=="ADMIN"){
-        $scope.cargo="Administrador";
-        $scope.descricao="Acesso total ao aplicativo";
-    }else{
-        $scope.user.perfil.forEach(perfil => {
-            if(perfil=="RECEPCIONISTA"){
-                $scope.cargo="Recepcionista";
-                $scope.descricao="Funções restritas a recepcionista";
-            }else if(perfil=="ANALISTA"&&$scope.cargo!="Recepcionista"){
-                $scope.cargo="Analista";
-                $scope.descricao="Analizar e liberar pedidos";
-            }else if(perfil=="TECNICO"&&$scope.cargo!="Recepcionista"&&$scope.cargo!="Analista"){
-                $scope.cargo="Tecnico";
-                $scope.descricao="Finalizar pedidos";
-            }
-        });
-    }
-	$scope.deslogar=function(){
-        $location.path("/home");
-    }
-    $scope.perfil=function(){
-        $location.path("/perfil");
-    }
+    
     $scope.novoPedido=function(){
         $location.path("/adicionarPedido");
     }

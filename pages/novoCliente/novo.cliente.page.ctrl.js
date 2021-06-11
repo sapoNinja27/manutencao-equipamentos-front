@@ -18,9 +18,10 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
             "bairro": $scope.bairro,
             "cidade": $scope.cidade
          }
-         console.log(newCliente)
          clienteService.addCliente(newCliente).then(function (data) {
 			$location.path("/menu");
-		});
+		}).catch(function(){
+            
+        });
     }
 });

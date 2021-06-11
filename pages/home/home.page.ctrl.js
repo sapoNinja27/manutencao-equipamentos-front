@@ -4,6 +4,9 @@ angular.module("sistemaManutencao").controller("homePageCtrl", function ($scope,
 	  		authAPI.authenticate(credenciais).then(function (data) {
 			authAPI.successfulLogin(data.headers("Authorization"))
 			$location.path("/menu/"+credenciais.nome);
-		});
+			$location.replace();
+		}).catch(function(){
+            
+        });
 	};
 });

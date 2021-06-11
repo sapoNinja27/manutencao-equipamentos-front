@@ -51,14 +51,15 @@
             <div class="titulo">
                 <div class="sub">
                     <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
-                    <div class="titulo">
-                        <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" src="{{foto}}">
-                    </div>
+                    
                 </div>
             </div>
-            <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
             
         </div>
+        <div class="titulo">
+            <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" src="{{foto}}">
+        </div>
+        <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
     </form>
     
 </div>
