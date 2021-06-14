@@ -1,12 +1,5 @@
 
-<div class="box">
-
-   
-
-
-
-
-
+<div class="box" ng-show="!imgShow">
     <form class="form">
         <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
         
@@ -59,13 +52,15 @@
                 </div>
             </div>
         </div>
+        <div class="titulo">
+            <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" ng-click="expandir(foto)" src="{{foto}}">
+        </div>
+        <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
         <div ng-if="secretaria()">
             <button class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
         </div>
-        <div class="titulo">
-            <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" src="{{foto}}">
-        </div>
-        <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
     </form>
-    
+</div>
+<div ng-show="imgShow">
+    <img ng-click="imgShow=false"  title="{{ImagemGrande}}" src="{{ImagemGrande}}">
 </div>

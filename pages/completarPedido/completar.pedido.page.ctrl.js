@@ -68,6 +68,9 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         if($scope.pedido.state=="CANCELADO"){
             show=false;
         }
+        if($scope.pedido.state=="CONCLUIDO"){
+            show=false;
+        }
         return show;
     }
     $scope.recusar=function(id){
@@ -85,6 +88,11 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
 		}).catch(function(){
             
         });
+    }
+    $scope.expandir=function(url){
+        console.log("dsfjhfdsj")
+        $scope.imgShow=true;
+        $scope.ImagemGrande=url;
     }
 	
 });
