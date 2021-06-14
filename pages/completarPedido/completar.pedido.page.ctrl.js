@@ -58,9 +58,28 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         }
         return show;
     }
+    $scope.secretaria=function(){
+        let show=false;
+        if(user=="ADMIN" || user=="RECEPCIONISTA"){
+            show=true;
+        }else  if(user=="ANALISTA"||user=="TECNICO"){
+            show=false;
+        }
+        if($scope.pedido.state=="CANCELADO"){
+            show=false;
+        }
+        return show;
+    }
     $scope.recusar=function(id){
-        console.log($scope.pedido)
         ordemService.recusar(id).then(function (data) {
+			$location.path("/listarPedidos");
+            $location.replace();
+		}).catch(function(){
+            
+        });
+    }
+    $scope.cancelar=function(id){
+        ordemService.cancelar(id).then(function (data) {
 			$location.path("/listarPedidos");
             $location.replace();
 		}).catch(function(){

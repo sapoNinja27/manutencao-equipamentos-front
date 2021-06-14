@@ -58,7 +58,9 @@
                     <label >Valor: {{pedido.valor| currency:'R$'}}</label>
                 </div>
             </div>
-            
+        </div>
+        <div ng-if="secretaria()">
+            <button class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
         </div>
         <div class="titulo">
             <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" src="{{foto}}">

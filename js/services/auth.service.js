@@ -8,7 +8,8 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
         let user={
             token:tok,
             perfis:null,
-            nome:null
+            nome:null,
+            id:null
             // email: jwtHelper.decodeToken(tok)
         };
         storageAPI.setLocalUser(user);
@@ -27,7 +28,8 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
         let user={
             token:storageAPI.getLocalUser().token,
             perfil:perfil,
-            nome:usuario.nome
+            nome:usuario.nome,
+            id:usuario.id
         };
         storageAPI.setLocalUser(user);
     }

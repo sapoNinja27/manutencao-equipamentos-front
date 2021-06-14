@@ -1,1 +1,10 @@
-pagina de perfil
+<div class="box" >
+    <form class="form">
+        <div class="sub-form">
+            <label>Mudar Senha: </label>
+            <input class="input" ng-model="senha"  type="password"></input>
+        </div>
+        <button class="entrar" ng-click="atualizarSenha(senha)">Atualizar</button>
+        <button class="excluir" ng-click="voltar()">Voltar</button>
+    </form>
+</div>

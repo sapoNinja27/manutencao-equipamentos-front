@@ -46,7 +46,8 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$sco
         $location.path("/home");
         $location.replace();
     }
-    // $scope.perfil=function(){
-    //     $location.path("/perfil");
-    // }
+    $scope.perfil=function(){
+        $location.path("/perfil");
+        $location.replace();
+    }
 });

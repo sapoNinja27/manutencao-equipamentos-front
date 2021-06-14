@@ -2,7 +2,10 @@ angular.module("sistemaManutencao").factory("errorInterceptor", function ($q, $l
 	return {
 		responseError: function (rejection) {
 			if (rejection.status === 400) {
-				console.log("erro de integridade")
+				alert("erro de integridade: "+rejection.data.error)
+			}else{
+				alert("Algo deu errado: "+rejection.data.error)
+				console.log(rejection)
 			}
 			return $q.reject(rejection);
 		}

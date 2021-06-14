@@ -12,6 +12,9 @@ angular.module("sistemaManutencao").service("ordemService", function ($http, con
 	this.recusar = function (id) {
 		return $http.put(config.baseUrl + "/ordens/"+id+"/recusar");
 	};
+	this.cancelar = function (id) {
+		return $http.put(config.baseUrl + "/ordens/"+id+"/cancelar");
+	};
 	this.atualizar = function (id,ordem) {
 		return $http.put(config.baseUrl + "/ordens/"+id,ordem);
 	};
