@@ -1,7 +1,6 @@
 angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scope, $location,usuarioService,storageAPI) {
 	
     $scope.user=storageAPI.getLocalUser();
-    console.log( $scope.user.id)
 	$scope.voltar=function(){
         $location.path("/menu");
         $location.replace();

@@ -34,7 +34,7 @@
             <div class="titulo">
                 <div class="sub">
                     <label >Valor :</label>
-                    <input class="input" ng-model="valor"  type="text"></input>
+                    <input   class="txtBox" ng-model="valor"  type="text"></input>
                 </div>
             </div>
             <div class="adicionarImagens">
@@ -58,6 +58,9 @@
         <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
         <div ng-if="secretaria()">
             <button class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
+        </div>
+        <div>
+            <button class="excluir"  ng-click="voltar()">Voltar</button>
         </div>
     </form>
 </div>

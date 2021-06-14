@@ -68,7 +68,14 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         if($scope.pedido.state=="CANCELADO"){
             show=false;
         }
+        if($scope.pedido.state=="RECUSADO"){
+            show=false;
+        }
+        
         if($scope.pedido.state=="CONCLUIDO"){
+            show=false;
+        }
+        if($scope.pedido.state=="ANALIZE_PENDENTE"){
             show=false;
         }
         return show;
@@ -90,9 +97,12 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         });
     }
     $scope.expandir=function(url){
-        console.log("dsfjhfdsj")
         $scope.imgShow=true;
         $scope.ImagemGrande=url;
+    }
+    $scope.voltar=function(){
+        $location.path("/listarPedidos");
+            $location.replace();
     }
 	
 });
