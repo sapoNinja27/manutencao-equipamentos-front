@@ -57,6 +57,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             if(ordem.marca!="" || ordem.equipamento!=""){
                 if($scope.problemas.length>=10){
                     ordemService.addOrdem(ordem).then(function (data) {
+                        alert("Adicionado!!");
                         $location.path("/menu");
                     }).catch(function(){
                     
