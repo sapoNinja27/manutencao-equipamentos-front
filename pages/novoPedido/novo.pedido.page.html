@@ -6,6 +6,7 @@
             <div ng-if="show"  class="lista">
                <a href="" ng-repeat="cliente in clientesFiltrados" ng-mouseover="mouseEmcima(false)" ng-mouseleave="mouseEmcima(true)" ng-click="selecionar(cliente.nome)">{{cliente.nome}}</a>
             </div>
+            <label class="alerta" ng-if="invalido">Cliente Invalido</label>
         </div>
         <div class="sub-form">
             <div class="titulo">
@@ -29,7 +30,8 @@
         </div>
         <div class="sub">
             <label>Problemas</label>
-            <textarea ng-model="problemas" class="txtBox" rows="4" cols="50"></textarea>
+            <textarea ng-model="problemas" ng-keyup="checarTamanho()" class="txtBox" rows="4" cols="50"></textarea>
+            <label class="alerta" ng-show="badDescription">Descrição de problema muito curta</label>
         </div> 
         <button class="entrar" ng-click="adicionar()">Enviar</button>
     </form>

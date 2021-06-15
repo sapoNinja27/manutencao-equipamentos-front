@@ -1,8 +1,21 @@
 <div class="box" >
     <form class="form">
         <div class="sub-form">
-            <label>Mudar Senha: </label>
-            <input class="input" ng-model="senha"  type="password"></input>
+            <label>Senha Antiga: </label>
+            <input class="input" ng-model="senha.antiga"  type="password"></input>
+        </div>
+        <div class="sub-form">
+            <label>Nova Senha: </label>
+            <input class="input" ng-model="senha.nova" ng-keyup="checar(senha)"  type="password"></input>
+            <label class="alerta" ng-if="incorreto">Falta um dos seguintes caracteres na senha digitada:  </label>
+            <label class="alerta" ng-if="incorreto">{{erro1}}</label>
+            <label class="alerta" ng-if="incorreto">{{erro2}}</label>
+            <label class="alerta" ng-if="incorreto">{{erro3}}</label>
+        </div>
+        <div class="sub-form">
+            <label>Confirmar Senha: </label>
+            <input class="input" ng-model="senha.confirmar" ng-keyup="checar(senha)" type="password"></input>
+            <label class="alerta" ng-if="diferente">Senhas diferentes</label>
         </div>
         <button class="entrar" ng-click="atualizarSenha(senha)">Atualizar</button>
         <button class="excluir" ng-click="voltar()">Voltar</button>

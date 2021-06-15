@@ -11,7 +11,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.marca="";
     $scope.equipamento="";
     $scope.problemas="";
-
+    $scope.invalido=false;
     $scope.adicionar=function(){
         let cli=null;
         for(let i=0;i<$scope.clientes.length;i++){
@@ -34,11 +34,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             equipamentoService.addMarca(novaMarca).then(function (data) {
                 ordem.marca=novaMarca.nome;
                 ordem.equipamento=novaMarca.equipamento;
-                ordemService.addOrdem(ordem).then(function (data) {
-                    $location.path("/menu");
-                }).catch(function(){
-            
-                });
+                sendOrdem(ordem);
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento=="Novo"){
@@ -48,21 +44,32 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             }
             equipamentoService.addEquipamento(novoEquipamento).then(function (data) {
                 ordem.equipamento=novoEquipamento.nome;
-                ordemService.addOrdem(ordem).then(function (data) {
-                    $location.path("/menu");
-                }).catch(function(){
-            
-                });
+                sendOrdem(ordem);
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
-            ordemService.addOrdem(ordem).then(function (data) {
-                $location.path("/menu");
-            }).catch(function(){
-            
-            });
+            sendOrdem(ordem);
         }
         
+    }
+    var sendOrdem=function(ordem){
+        if(ordem.cliente!=null){
+            if(ordem.marca!="" || ordem.equipamento!=""){
+                if($scope.problemas.length>=10){
+                    ordemService.addOrdem(ordem).then(function (data) {
+                        $location.path("/menu");
+                    }).catch(function(){
+                    
+                    });
+                }else{
+                    alert("Descrição de problemas muito curta")
+                }
+            }else{
+                alert("Selecione corretamente equipamento e marca")
+            }
+        }else{
+            alert("Cliente Invalido")
+        }
     }
     $scope.atualizarEquipamentos=function(marca){
         let equipamento=""
@@ -96,7 +103,13 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     
 
 
-
+$scope.checarTamanho=function(){
+    if($scope.problemas.length<10 && $scope.problemas.length>0){
+        $scope.badDescription=true;
+    }else{
+        $scope.badDescription=false;
+    }
+}
 // campos cliente
     $scope.selecionar=function(nome) {
         $scope.nome=nome;
@@ -109,6 +122,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.clicouFora=function(){
         if($scope.pdeFechar){
             $scope.show=false;
+            $scope.clientesFiltrados=$scope.clientes;
         }
     }
     $scope.toggle=function() { 
@@ -120,9 +134,17 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.filtrar=function (palavra) {
         if(palavra.length==0){
             $scope.show=false;
+            $scope.invalido=false;
         }else{
             $scope.show=true;
+            if($scope.clientesFiltrados.length==0){
+                $scope.invalido=true;
+            }else{
+                $scope.invalido=false;
+            }
         }
         $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
+
+        
       }
 });
