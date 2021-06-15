@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope, $location,ordemService,equipamentoService, clientes,equipamentos,marcas,storageAPI) {
+angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope,pesquisaAPI, $location,ordemService,equipamentoService, clientes,equipamentos,marcas,storageAPI) {
 	
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
@@ -114,38 +114,15 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.toggle=function() { 
         $scope.show=!$scope.show;
     }
+
+
+
     $scope.filtrar=function (palavra) {
         if(palavra.length==0){
             $scope.show=false;
         }else{
             $scope.show=true;
         }
-        novaLista=[]
-        for(let i=0;i<$scope.clientes.length;i++){
-            novaLista[i]={nome: ""}
-            for(let j=0;j<palavra.length;j++){
-                if($scope.clientes[i].nome.charAt(j)==palavra.charAt(j)){
-                    novaLista[i].nome=$scope.clientes[i].nome;
-                    atualizar(novaLista);
-                }else{
-                    novaLista[i]={nome: ""}
-                    atualizar(novaLista);
-                }
-            }
-        }
+        $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
       }
-      var atualizar=function(lista){
-        let palavras="";
-        for(let i=0;i<lista.length;i++){
-            if(lista[i].nome!=""){
-                palavras+=":"+lista[i].nome;
-            }
-        }
-        palavrasArray=palavras.split(":");
-        $scope.clientesFiltrados=[];
-        for(let i=1;i<palavrasArray.length;i++){
-            $scope.clientesFiltrados[i-1]={nome:palavrasArray[i]}
-        }
-      }
-	
 });
