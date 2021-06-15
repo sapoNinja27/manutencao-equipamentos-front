@@ -1,7 +1,17 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,$scope, $location,usuario,storageAPI,authAPI) {
     if(storageAPI.getLocalUser().perfil==null){
         authAPI.atualizarUsuario(usuario.data);
-        $route.reload();
+        let menu = false;
+        usuario.data.perfil.forEach(perfil => {
+            if(perfil=="ADMIN"|| perfil=="RECEPCIONISTA"){
+                menu=true
+            }
+        });
+        if(menu){
+            $route.reload();
+        }else{
+            $location.path("/listarPedidos");
+        }
     }
     $scope.user=storageAPI.getLocalUser();
     

@@ -5,7 +5,6 @@ angular.module("sistemaManutencao").factory("errorInterceptor", function ($q, $l
 				alert("erro de integridade: "+rejection.data.error)
 			}else{
 				alert("Algo deu errado: "+rejection.data.error)
-				console.log(rejection)
 			}
 			return $q.reject(rejection);
 		}
