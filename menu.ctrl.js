@@ -1,6 +1,4 @@
-angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$scope, $location,storageAPI) {
-
-    
+angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$scope,usuarioService, $location,storageAPI,authAPI) {
 
     $scope.home=function(){
         if($location.path()=="/home"){
@@ -42,6 +40,39 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$sco
             return true;
         }
     }
+    $scope.imagem=function(){
+        $scope.user=storageAPI.getLocalUser();
+        if($scope.user.profilePicture==null){
+            return "res/logo.png"
+        }else{
+            return $scope.user.profilePicture
+        }
+    }
+    
+    $scope.fileChanged = function($event){
+        var files = $event.target.files;
+        console.log(files)
+    }
+    $scope.update=function(){
+        console.log("sjgshgassasgagsahsdgahhas")
+        // let f=document.getElementById('img').files[0];
+        //     $scope.user=storageAPI.getLocalUser();
+        //     usuarioService.uploadPicture($scope.user.id,f)
+        //         .then(function(data){
+        //             usuarioService.getUsuarioById($scope.user.id).then(function(data){
+        //                 userAux=data.data;
+        //                 $scope.user=storageAPI.getLocalUser();
+        //                 $scope.user.profilePicture=userAux.imagem;
+        //                 authAPI.atualizarImagem($scope.user)
+        //                 $scope.mudou=false;
+        //                 $route.reload();
+        //             })
+        //         })
+        //         .catch(function(error){
+        //             console.log(error)   
+        //         })
+    }
+    
 	$scope.deslogar=function(){
         $location.path("/home");
         $location.replace();

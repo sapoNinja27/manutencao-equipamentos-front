@@ -11,6 +11,9 @@
             <label class="alerta" ng-if="incorreto">{{erro1}}</label>
             <label class="alerta" ng-if="incorreto">{{erro2}}</label>
             <label class="alerta" ng-if="incorreto">{{erro3}}</label>
+            <label class="alerta" ng-if="pequena">
+                Digite mais {{8-senha.nova.length}} caractere<label ng-if="8-senha.nova.length>1">s</label>
+            </label>
         </div>
         <div class="sub-form">
             <label>Confirmar Senha: </label>

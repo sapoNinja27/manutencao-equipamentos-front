@@ -52,8 +52,10 @@
 	<script src="js/config/configValue.js"></script>
 	<script src="app.router.ctrl.js"></script>
 	<script src="js/services/domain/usuario.service.js"></script>
-	<script src="js/services/image.service.js"></script>
 	<script src="js/services/filtro.pesquisa.service.js"></script>
+
+	<!-- directives -->
+	<script src="js/directives/file-upload.js"></script>
 
 
 	<script src="js/interceptors/auth.interceptor.js"></script>
@@ -79,9 +81,12 @@
 			<a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
 			<label title="{{descricao}}">{{cargo}}</label>
 		</div>
-		<img class="icon" src="res/logo.png"></img>
+		<label for="img" ng-click="atualizar()"><img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img></label>
 		<a href="" ng-click="deslogar()" class="sair">Sair</a>
 	</div>
+	<input data-file id="img" ng-model="img" style="visibility:hidden;"	type="file">
+	
+	
 	<div ng-view></div>
 </body>
 </html>

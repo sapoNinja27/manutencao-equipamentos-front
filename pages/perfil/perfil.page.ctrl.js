@@ -13,6 +13,7 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
             $scope.diferente=false;
         }
         
+
         if(senha.nova.match(new RegExp("[0-9]")) 
             && senha.nova.match(new RegExp("[a-z]")) 
             && senha.nova.match(new RegExp("[A-Z]"))){
@@ -44,33 +45,48 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
         }
         if(senha.nova==""|| senha.nova==null){
             $scope.incorreto=false;
+        }else{
+            if(senha.nova.length>7 && senha.nova.length>0){
+                $scope.pequena=false;
+            }else{
+                $scope.pequena=true;
+            }
         }
     }
     $scope.atualizarSenha=function(senha){
-
-        credenciais={
-            "nome":$scope.user.nome,
-            "senha": senha.antiga
-        }
-
-        authAPI.authenticate(credenciais).then(function (data) {
-            if(senha.confirmar==senha.nova){
-                usuarioNovo={
-                    "senha":senha.nova
-                }
-                let id =$scope.user.id;
-                usuarioService.atualizar(id,usuarioNovo).then(function (data) {
-                    $location.path("/menu");
-                    $location.replace();
-                }).catch(function(){
-                    alert("Formato de senha invalido")
-                });
-            }else{
-                alert("Senhas são diferentes")
+        if(senha!=undefined && senha!="" && senha!=null){
+            credenciais={
+                "nome":$scope.user.nome,
+                "senha": senha.antiga
             }
-		}).catch(function(){
-            alert("Senha incorreta")
-        });
-        
+            authAPI.authenticate(credenciais).then(function (data) {
+                if(senha.nova!=undefined && senha.nova !=null){
+                    if(!$scope.incorreto & !$scope.pequena){
+                        if(senha.confirmar==senha.nova){
+                            usuarioNovo={
+                                "senha":senha.nova
+                            }
+                            let id =$scope.user.id;
+                            usuarioService.atualizar(id,usuarioNovo).then(function (data) {
+                                $location.path("/menu");
+                                $location.replace();
+                            }).catch(function(){
+                                alert("Formato de senha invalido")
+                            });
+                        }else{
+                            alert("Senhas são diferentes")
+                        }
+                    }else{
+                        alert("Senha muito fraca")
+                    }
+                }else{
+                    alert("Preencha corretamente os campos")
+                }
+            }).catch(function(){
+                
+            });
+        }else{
+            alert("Preencha os campos corretamente")
+        }
     }
 });

@@ -1,21 +1,19 @@
-angular.module("sistemaManutencao").controller("menuPageCtrl", function ($route,$scope, $location,usuario,storageAPI,authAPI) {
-    if(storageAPI.getLocalUser().perfil==null){
-        authAPI.atualizarUsuario(usuario.data);
-        let menu = false;
-        usuario.data.perfil.forEach(perfil => {
-            if(perfil=="ADMIN"|| perfil=="RECEPCIONISTA"){
-                menu=true
+angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,storageAPI) {
+    
+    $scope.user=storageAPI.getLocalUser();
+    if( $scope.user.perfil=="ADMIN"){
+
+    }else{
+        let rec=false
+        $scope.user.perfil.forEach(perfil => {
+            if(perfil=="RECEPCIONISTA"){
+                rec=true;
             }
         });
-        if(menu){
-            $route.reload();
-        }else{
+        if(!rec){
             $location.path("/listarPedidos");
         }
     }
-    $scope.user=storageAPI.getLocalUser();
-    
-    
     $scope.novoPedido=function(){
         $location.path("/adicionarPedido");
     }

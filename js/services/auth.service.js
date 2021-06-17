@@ -3,18 +3,8 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
 	this.authenticate = function (creds) {
 		return $http.post(config.baseUrl + "/login",creds);
 	};
-    this.successfulLogin= function (authorizationValue){
+    this.successfulLogin= function (authorizationValue,usuario){
         let tok = authorizationValue.substring(7);
-        let user={
-            token:tok,
-            perfis:null,
-            nome:null,
-            id:null
-            // email: jwtHelper.decodeToken(tok)
-        };
-        storageAPI.setLocalUser(user);
-    }
-    this.atualizarUsuario=function(usuario){
         let perfil=""
         usuario.perfil.forEach(p => {
             if(p=="ADMIN" ){
@@ -26,10 +16,23 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
             }
         });
         let user={
-            token:storageAPI.getLocalUser().token,
+            token:tok,
             perfil:perfil,
             nome:usuario.nome,
-            id:usuario.id
+            id:usuario.id,
+            profilePicture:usuario.imagem
+        };
+        storageAPI.setLocalUser(user);
+        return user
+    }
+    this.atualizarImagem= function (usuario){
+        
+        let user={
+            token:usuario.token,
+            perfil:usuario.perfil,
+            nome:usuario.nome,
+            id:usuario.id,
+            profilePicture:usuario.profilePicture
         };
         storageAPI.setLocalUser(user);
     }
