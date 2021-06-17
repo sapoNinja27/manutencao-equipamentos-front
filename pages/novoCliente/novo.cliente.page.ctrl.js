@@ -160,4 +160,8 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
             return false;
         }
     }
+    $scope.voltar=function(){
+        $location.path("/menu");
+        $location.replace();
+    }
 });

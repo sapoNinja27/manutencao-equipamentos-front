@@ -43,6 +43,9 @@
             <input id="img"  style="visibility:hidden;" type="file" multiple>
             <button class="entrar"  ng-click="enviar()">Enviar</button>
             <button class="excluir"  ng-click="recusar(pedido.id)">Recusar</button>
+            <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
+            <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
+            <button class="excluir"  ng-click="voltar()">Voltar</button>
         </div>
         <div   ng-if="pedido.state!='ANALIZE_PENDENTE'" class="sub-form">
             <div class="titulo">
@@ -54,14 +57,6 @@
         </div>
         <div class="titulo">
             <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" ng-click="expandir(foto)" src="{{foto}}">
-        </div>
-        <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
-        <div ng-if="secretaria()">
-            <button class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
-        </div>
-        <div>
-            <!-- <button class="entrar"  ng-click="editar(pedido.id)">Editar</button> -->
-            <button class="excluir"  ng-click="voltar()">Voltar</button>
         </div>
     </form>
 </div>

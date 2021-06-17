@@ -11,6 +11,10 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function ($sco
             
         });
     }
+    $scope.voltar=function(){
+        $location.path("/listarClientes");
+            $location.replace();
+    }
     $scope.enviar=function(){
         
         let newCliente={

@@ -148,4 +148,8 @@ $scope.checarTamanho=function(){
 
         
       }
+      $scope.voltar=function(){
+        $location.path("/menu");
+        $location.replace();
+    }
 });
