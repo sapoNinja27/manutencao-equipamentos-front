@@ -53,6 +53,7 @@
 	<script src="app.router.ctrl.js"></script>
 	<script src="js/services/domain/usuario.service.js"></script>
 	<script src="js/services/filtro.pesquisa.service.js"></script>
+	<script src="js/services/domain/local.user.service.js"></script>
 
 	<!-- directives -->
 	<script src="js/directives/file-upload.js"></script>
@@ -78,7 +79,7 @@
 	<div class="toolbar" ng-show="home()" ng-controller="menuCtrl">
 		<label class="title">{{pagina}}</label>
 		<div class="user">
-			<a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
+			<a href="" ng-click="perfil()", class="username">{{user.nomeNormal}} </a>
 			<label title="{{descricao}}">{{cargo}}</label>
 		</div>
 		<label for="icone" ><img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img></label>

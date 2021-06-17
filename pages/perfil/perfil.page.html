@@ -1,5 +1,13 @@
 <div class="box" >
-    <form class="form">
+    <select>
+        <option ng-show="clicked">Selecione uma opção</option>
+        <option ng-click="selecionou(1)">Senha</option>
+        <option ng-click="selecionou(2)">Nome</option>
+        <option ng-click="selecionou(3)">Nome De Usuario</option>
+    </select>
+</div>
+<div class="box" >
+    <form class="form" ng-if="mudarSenha">
         <div class="sub-form">
             <label>Senha Antiga: </label>
             <input class="input" ng-model="senha.antiga"  type="password"></input>
@@ -21,6 +29,30 @@
             <label class="alerta" ng-if="diferente">Senhas diferentes</label>
         </div>
         <button class="entrar" ng-click="atualizarSenha(senha)">Atualizar</button>
+        <button class="excluir" ng-click="voltar()">Voltar</button>
+    </form>
+    <form class="form" ng-if="mudarUsuario">
+        <div class="sub-form">
+            <label>Novo nome de usuario: </label>
+            <input class="input" ng-model="usuario.nome"   type="text"></input>
+        </div>
+        <div class="sub-form">
+            <label>Digite sua senha: </label>
+            <input class="input" ng-model="usuario.senha"  type="password"></input>
+        </div>
+        <button class="entrar" ng-click="atualizarUser(usuario)">Atualizar</button>
+        <button class="excluir" ng-click="voltar()">Voltar</button>
+    </form>
+    <form class="form" ng-if="mudarNome">
+        <div class="sub-form">
+            <div class="sub-form">
+                <label>Novo nome: </label>
+                <input class="input" ng-model="usuario.nome"   type="text"></input>
+            </div>
+            <label>Digite sua senha: </label>
+            <input class="input" ng-model="usuario.senha"  type="password"></input>
+        </div>
+        <button class="entrar" ng-click="atualizarNome(usuario)">Atualizar</button>
         <button class="excluir" ng-click="voltar()">Voltar</button>
     </form>
 </div>

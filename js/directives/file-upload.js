@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").directive('fileUpload', function(usuarioService,storageAPI,authAPI) {
+angular.module("sistemaManutencao").directive('fileUpload', function(usuarioService,storageAPI,localUserAPI) {
   return {
       require:"ngModel",
       restrict: 'A',
@@ -7,12 +7,11 @@ angular.module("sistemaManutencao").directive('fileUpload', function(usuarioServ
               var files = event.target.files;
               var file = files[0];
               var user=storageAPI.getLocalUser();
+              console.log(user)
               usuarioService.uploadPicture(user.id,file)
                 .then(function(data){
                     usuarioService.getUsuarioById(user.id).then(function(data){
-                        var userAux=data.data;
-                        user.profilePicture=userAux.imagem;
-                        authAPI.atualizarImagem(user)
+                        localUserAPI.atualizarImagem(data.data.imagem)
                     })
                 })
                 .catch(function(error){

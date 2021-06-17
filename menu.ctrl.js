@@ -1,5 +1,5 @@
 angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$scope,usuarioService, $location,storageAPI,authAPI) {
-
+    
     $scope.home=function(){
         if($location.path()=="/home"){
             return false
@@ -40,12 +40,15 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($route,$sco
             return true;
         }
     }
+    $scope.usuario=function(){
+        return $scope.user.nomeNormal
+    }
     $scope.imagem=function(){
         $scope.user=storageAPI.getLocalUser();
-        if($scope.user.profilePicture==null){
+        if($scope.user.imagem==null){
             return "res/logo.png"
         }else{
-            return $scope.user.profilePicture
+            return $scope.user.imagem
         }
     }
     

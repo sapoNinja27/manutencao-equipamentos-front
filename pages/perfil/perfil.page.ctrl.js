@@ -1,9 +1,28 @@
-angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scope,authAPI, $location,usuarioService,storageAPI) {
+angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scope,authAPI,localUserAPI ,$location,usuarioService,storageAPI) {
 	
+
     $scope.user=storageAPI.getLocalUser();
 	$scope.voltar=function(){
         $location.path("/menu");
         $location.replace();
+    }
+    $scope.selecionou=function(selected){
+        $scope.clicked=false;
+        if(selected==1){
+            $scope.mudarSenha=true;
+            $scope.mudarUsuario=false;
+            $scope.mudarNome=false;
+        }
+        if(selected==2){
+            $scope.mudarSenha=false;
+            $scope.mudarUsuario=false;
+            $scope.mudarNome=true;
+        }
+        if(selected==3){
+            $scope.mudarSenha=false;
+            $scope.mudarUsuario=true;
+            $scope.mudarNome=false;
+        }
     }
     $scope.checar=function(senha){
 
@@ -79,6 +98,64 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
                     }else{
                         alert("Senha muito fraca")
                     }
+                }else{
+                    alert("Preencha corretamente os campos")
+                }
+            }).catch(function(){
+                
+            });
+        }else{
+            alert("Preencha os campos corretamente")
+        }
+    }
+    $scope.atualizarUser=function(user){
+        if(user!=undefined && user!="" && user!=null){
+            credenciais={
+                "nome":$scope.user.nome,
+                "senha": user.senha
+            }
+            authAPI.authenticate(credenciais).then(function (data) {
+                if(user.nome!=undefined && user.nome !=null){
+                    usuarioNovo={
+                        "nome":user.nome
+                    }
+                    let id = $scope.user.id;
+                    usuarioService.atualizar(id,usuarioNovo).then(function (data) {
+                        localUserAPI.atualizarNick(user)
+                        $location.path("/menu");
+                        $location.replace();
+                    }).catch(function(error){
+
+                    });
+                }else{
+                    alert("Preencha corretamente os campos")
+                }
+            }).catch(function(){
+                
+            });
+        }else{
+            alert("Preencha os campos corretamente")
+        }
+    }
+    $scope.atualizarNome=function(user){
+        if(user!=undefined && user!="" && user!=null){
+            credenciais={
+                "nome":$scope.user.nome,
+                "senha": user.senha
+            }
+            authAPI.authenticate(credenciais).then(function (data) {
+                if(user.nome!=undefined && user.nome !=null){
+                    usuarioNovo={
+                        "nomeNormal":user.nome
+                    }
+                    let id = $scope.user.id;
+                    usuarioService.atualizar(id,usuarioNovo).then(function (data) {
+                        localUserAPI.atualizarNome(user.nome)
+                        $location.path("/menu");
+                        $location.replace();
+                    }).catch(function(error){
+                        
+                    });
                 }else{
                     alert("Preencha corretamente os campos")
                 }

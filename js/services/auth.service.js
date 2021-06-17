@@ -19,23 +19,14 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
             token:tok,
             perfil:perfil,
             nome:usuario.nome,
+            nomeNormal: usuario.nomeNormal,
             id:usuario.id,
-            profilePicture:usuario.imagem
+            imagem:usuario.imagem
         };
         storageAPI.setLocalUser(user);
         return user
     }
-    this.atualizarImagem= function (usuario){
-        
-        let user={
-            token:usuario.token,
-            perfil:usuario.perfil,
-            nome:usuario.nome,
-            id:usuario.id,
-            profilePicture:usuario.profilePicture
-        };
-        storageAPI.setLocalUser(user);
-    }
+   
     this.refreshToken=function() {
         return $http.post(config.baseUrl + "/auth/refresh_token",{},);
     }
