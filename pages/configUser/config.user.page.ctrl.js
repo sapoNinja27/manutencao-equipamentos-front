@@ -13,16 +13,10 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     $scope.usuariosFiltrados=[]
     for(let i=0; i<$scope.usuarios.length;i++){
         if(localUser.nome==$scope.usuarios[i].nome){
-            achou=true;
-        }
-        if(achou){
-            if(i-1>=0){
-                $scope.usuariosFiltrados[i-1]=$scope.usuarios[i];
-            }
-        }else{
-            $scope.usuariosFiltrados[i]=$scope.usuarios[i];
+            $scope.usuarios.splice(i, 1);
         }
     }
+    $scope.usuariosFiltrados=$scope.usuarios;
 
     $scope.analizar=function(usuario){
         $scope.analizando=true;

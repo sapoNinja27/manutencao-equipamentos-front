@@ -81,10 +81,10 @@
 			<a href="" ng-click="perfil()", class="username">{{user.nome}} </a>
 			<label title="{{descricao}}">{{cargo}}</label>
 		</div>
-		<label for="img" ng-click="atualizar()"><img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img></label>
+		<label for="icone" ><img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img></label>
 		<a href="" ng-click="deslogar()" class="sair">Sair</a>
 	</div>
-	<input data-file id="img" ng-model="img" style="visibility:hidden;"	type="file">
+	<input data-file-upload id="icone" ng-model="img" style="visibility:hidden;"	type="file">
 	
 	
 	<div ng-view></div>

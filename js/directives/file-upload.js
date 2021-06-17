@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").directive('file', function(usuarioService,storageAPI,authAPI) {
+angular.module("sistemaManutencao").directive('fileUpload', function(usuarioService,storageAPI,authAPI) {
   return {
       require:"ngModel",
       restrict: 'A',
