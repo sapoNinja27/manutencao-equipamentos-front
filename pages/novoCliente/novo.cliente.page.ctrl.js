@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("novoClientePageCtrl", function ($scope, $location,clienteService) {
+angular.module("sistemaManutencao").controller("novoClientePageCtrl", function ($scope,formatadorAPI, $location,clienteService) {
     $scope.nome;
     $scope.rg;
     $scope.cpf;
@@ -20,13 +20,15 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
         if($scope.telefone!=undefined){
             formatTelefone();
         }
+        if($scope.cidade!=undefined){
+            formatCidade();
+        }
+        if($scope.bairro!=undefined){
+            formatBairro();
+        }
     }
     var formatNome=function(){
-        palavra=[]
-        palavra[0]=$scope.nome.substring(0,1);
-        palavra[1]=$scope.nome.substring(1);
-        palavra[0]=palavra[0].toUpperCase()
-        $scope.nome=palavra[0]+palavra[1];
+        $scope.nome=formatadorAPI.formatar( $scope.nome);
     }
     var formatRg=function(){
         rg=$scope.rg.replace(/[^0-9]+/g, "");
@@ -79,6 +81,12 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
             } 
         }
 		$scope.telefone=tel;	
+    }
+    var formatBairro=function(){
+        $scope.bairro=formatadorAPI.formatar( $scope.bairro);
+    }
+    var formatCidade=function(){
+        $scope.cidade=formatadorAPI.formatar( $scope.cidade);
     }
 	$scope.adicionar=function(){
         let cpf=$scope.cpf.replace(/[^0-9]+/g, "");

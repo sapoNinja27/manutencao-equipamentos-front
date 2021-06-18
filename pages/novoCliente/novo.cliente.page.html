@@ -43,7 +43,7 @@
                     <label>
                         Bairro
                     </label>
-                    <input class="input" ng-model="bairro"  type="text"></input>
+                    <input class="input" ng-model="bairro" ng-keyup="format()" type="text"></input>
                     <label class="alerta" ng-if="campoIncorreto(bairro,5)">
                         Bairro Invalido
                     </label>
@@ -52,7 +52,7 @@
                     <label>
                         Cidade
                     </label>
-                    <input class="input" ng-model="cidade"  type="text"></input>
+                    <input class="input" ng-model="cidade" ng-keyup="format()" type="text"></input>
                     <label class="alerta" ng-if="campoIncorreto(cidade,5)">
                         Cidade Invalida
                     </label>
