@@ -49,9 +49,10 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $lo
         $scope.user=storageAPI.getLocalUser();
         if($scope.user==null){
             return "res/logo.png"
-        }else{
-            return $scope.user.imagem
+        }else if($scope.user.imagem==null){
+            return "res/logo.png"
         }
+        return $scope.user.imagem
     }
     $scope.deslogar=function(){
         $location.path("/home");

@@ -106,8 +106,8 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
             clienteService.addCliente(newCliente).then(function (data) {
                 alert("Adicionado!!");
                 $location.path("/menu");
-            }).catch(function(error){
-                console.log(error)
+            }).catch(function(){
+                
             });
          }
          
