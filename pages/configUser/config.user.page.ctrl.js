@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,storageAPI, $location,$route,usuarios,usuarioService) {
+angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,storageAPI,$route,usuarios,usuarioService) {
     $scope.usuarios=usuarios.data;
     $scope.cargos=[
         "TECNICO",
@@ -17,13 +17,18 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
         }
     }
     $scope.usuariosFiltrados=$scope.usuarios;
-
     $scope.analizar=function(usuario){
         $scope.analizando=true;
         $scope.usuario=usuario;
     }
     $scope.novoUsuario=function(){
         $scope.adicionando=true;
+    }
+    $scope.tabela=function(){
+        if(!$scope.analizando && !$scope.adicionando){
+            return true;
+        }
+        return false;
     }
     $scope.adicionarUsuario=function(user){
         usuarioNovo={
@@ -46,7 +51,6 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
                 array+=":"+cargosNormais[i];
             }
         }
-
         if(novo){
             cargosNormais.push(car);
         }else{

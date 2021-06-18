@@ -1,5 +1,4 @@
-angular.module("sistemaManutencao").service("authAPI", function ( $http,config,storageAPI) {
-
+angular.module("sistemaManutencao").service("authAPI", function ($http,config,storageAPI) {
 	this.authenticate = function (creds) {
 		return $http.post(config.baseUrl + "/login",creds);
 	};
@@ -26,16 +25,13 @@ angular.module("sistemaManutencao").service("authAPI", function ( $http,config,s
         storageAPI.setLocalUser(user);
         return user
     }
-   
     this.refreshToken=function() {
         return $http.post(config.baseUrl + "/auth/refresh_token",{},);
     }
-    
     this.logout=function(){
         this.storageAPI.setLocalUser(null);
     }
     this.checkUser=function(){
         return this.storageAPI.getLocalUser();
     }
-
 });

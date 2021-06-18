@@ -1,5 +1,4 @@
 angular.module("sistemaManutencao").controller("novoClientePageCtrl", function ($scope, $location,clienteService) {
-	
     $scope.nome;
     $scope.rg;
     $scope.cpf;

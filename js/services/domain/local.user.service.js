@@ -1,5 +1,4 @@
 angular.module("sistemaManutencao").service("localUserAPI", function (storageAPI,authAPI) {
-
 	this.atualizarImagem= function (img){
         let user= storageAPI.getLocalUser();
         user.imagem=img;
@@ -12,7 +11,6 @@ angular.module("sistemaManutencao").service("localUserAPI", function (storageAPI
     }
     this.atualizarNick= function (usuario){
         let user= storageAPI.getLocalUser();
-
         authAPI.authenticate(usuario).then(function (data) {
             user.nome=usuario.nome;
             user.token=data.headers("Authorization").substring(7);

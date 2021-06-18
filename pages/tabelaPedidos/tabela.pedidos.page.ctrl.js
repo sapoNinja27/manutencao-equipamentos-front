@@ -1,14 +1,9 @@
 angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function ($scope, $location,pedidos,storageAPI) {
 	$scope.pedidos=pedidos.data;
-    
-    
     $scope.pedidosAbertos=$scope.pedidos;
     $scope.pedidosFechados;
     let user= storageAPI.getLocalUser().perfil;
-
-
     $scope.show=function(estado){
-
         let show=false;
         if(user=="ADMIN" || user=="RECEPCIONISTA"){
             show=true;
@@ -41,7 +36,6 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
                 show=true;
             }
         }
-        
         return show;
     }
     $scope.classe=function(estado){
@@ -65,7 +59,4 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
         $location.path("/pedido/"+pedido_id);
         $location.replace();
     }
-
-    
-	
 });

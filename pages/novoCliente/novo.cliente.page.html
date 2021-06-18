@@ -1,57 +1,94 @@
-
 <div class="formulario">
     <form class="form">
         <div class="sub-form">
-            <label>Nome</label>
+            <label>
+                Nome
+            </label>
             <input class="input" ng-model="nome" ng-keyup="format()" type="text"></input>
-            <label class="alerta" ng-if="campoIncorreto(nome,10)">Nome Invalido</label>
+            <label class="alerta" ng-if="campoIncorreto(nome,10)">
+                Nome Invalido
+            </label>
         </div>
         <div class="sub-form">
-            <label>Documentos:</label>
+            <label>
+                Documentos:
+            </label>
             <div class="titulo">
                 <div class="sub">
-                    <label>RG</label>
+                    <label>
+                        RG
+                    </label>
                     <input class="input" ng-model="rg" ng-keyup="format()" type="text"></input>
-                    <label class="alerta" ng-if="campoIncorreto(rg,12)">RG Invalido</label>
+                    <label class="alerta" ng-if="campoIncorreto(rg,12)">
+                        RG Invalido
+                    </label>
                 </div>
                 <div class="sub">
-                    <label>CPF</label>
+                    <label>
+                        CPF
+                    </label>
                     <input class="input" ng-model="cpf" ng-keyup="format()" type="text"></input>
-                    <label class="alerta" ng-if="campoIncorreto(cpf,14)">CPF Invalido</label>
+                    <label class="alerta" ng-if="campoIncorreto(cpf,14)">
+                        CPF Invalido
+                    </label>
                 </div>
             </div>
         </div>
         <div class="sub-form">
-            <label>Endereço:</label>
+            <label>
+                Endereço:
+            </label>
             <div class="titulo">
                 <div class="sub">
-                    <label>Bairro</label>
+                    <label>
+                        Bairro
+                    </label>
                     <input class="input" ng-model="bairro"  type="text"></input>
-                    <label class="alerta" ng-if="campoIncorreto(bairro,5)">Bairro Invalido</label>
+                    <label class="alerta" ng-if="campoIncorreto(bairro,5)">
+                        Bairro Invalido
+                    </label>
                 </div>
                 <div class="sub">
-                    <label>Cidade</label>
+                    <label>
+                        Cidade
+                    </label>
                     <input class="input" ng-model="cidade"  type="text"></input>
-                    <label class="alerta" ng-if="campoIncorreto(cidade,5)">Cidade Invalida</label>
+                    <label class="alerta" ng-if="campoIncorreto(cidade,5)">
+                        Cidade Invalida
+                    </label>
                 </div>
             </div>
         </div>
         <div class="sub-form">
-            <label>Contato:</label>
+            <label>
+                Contato:
+            </label>
             <div class="titulo">
                 <div class="sub">
-                    <label>Email</label>
+                    <label>
+                        Email
+                    </label>
                     <input class="input" ng-model="email"  type="text"></input>
-                    <label class="alerta" ng-if="validarEmail()">Email Invalido</label>
+                    <label class="alerta" ng-if="validarEmail()">
+                        Email Invalido
+                    </label>
                 </div>
                 <div class="sub">
-                    <label>Telefone</label>
+                    <label>
+                        Telefone
+                    </label>
                     <input class="input" ng-model="telefone" ng-keyup="format()" type="text"></input>
-                    <label class="alerta" ng-if="campoIncorreto(telefone,13)">Telefone Invalido</label>
+                    <label class="alerta" ng-if="campoIncorreto(telefone,13)">
+                        Telefone Invalido
+                    </label>
                 </div>
             </div>
         </div>
-        <button class="entrar" ng-click="adicionar()">Enviar</button>
-        <button class="excluir" ng-click="voltar()">Voltar</button>
+        <button class="entrar" ng-click="adicionar()">
+            Enviar
+        </button>
+        <button class="excluir" ng-click="voltar()">
+            Voltar
+        </button>
     </form>
 </div>

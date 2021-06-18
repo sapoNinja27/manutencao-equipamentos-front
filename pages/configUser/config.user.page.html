@@ -1,52 +1,80 @@
-
-<div class="sub-form" ng-show="!analizando&&!adicionando">
-    <label>Pesquisar</label>
-    <input class="input" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
-    <button class="entrar" ng-click="novoUsuario()">Novo</button>
-</div>
-<div class="tabela" ng-show="!analizando&&!adicionando">
-    <div class="nome">
-        <label class="item-titulo"> Usuario</label>
-        <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">{{usuario.nome}}</a>
-    </div>
-    <div class="documento">
-        <label class="item-titulo"> Cargo</label>
-        <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
-            <label ng-repeat="perfil in usuario.perfil">
-                {{perfil}}
+<div>
+    <div ng-show="tabela()">
+        <div class="sub-form">
+            <label>
+                Pesquisar
             </label>
-        </a>
+            <input class="input" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
+            <button class="entrar" ng-click="novoUsuario()">
+                Novo
+            </button>
+        </div>
+        <div class="tabela">
+            <div class="nome">
+                <label class="item-titulo"> 
+                    Usuario
+                </label>
+                <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
+                    {{usuario.nome}}
+                </a>
+            </div>
+            <div class="documento">
+                <label class="item-titulo"> Cargo</label>
+                <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
+                    <label ng-repeat="perfil in usuario.perfil">
+                        {{perfil}}
+                    </label>
+                </a>
+            </div>
+        </div> 
     </div>
-</div> 
-<div class="box" ng-show="analizando">
-    <form class="form">
-        <div class="sub-form">
-            <label>Nome: {{usuario.nome}}</label>
-        </div>
-        <div class="sub-form">
-            <label>Cargos:</label>
-            <div class="check" >
-                <input class="checkBox"  type="checkbox" value="cargo" ng-click="attAdm()">
-                ADMINISTRADOR
+    <div class="box" ng-show="analizando">
+        <form class="form">
+            <div class="sub-form">
+                <label>
+                    Nome: {{usuario.nome}}
+                </label>
             </div>
-            <div class="check" ng-show="!adm" ng-repeat="cargo in cargos" ng-click="adicionarCargo(cargo)">
-                <input class="checkBox"  type="checkbox" value="cargo">
-                {{cargo}}
+            <div class="sub-form">
+                <label>
+                    Cargos:
+                </label>
+                <div class="check" >
+                    <input class="checkBox"  type="checkbox" value="cargo" ng-click="attAdm()">
+                        ADMINISTRADOR
+                    </input>
+                </div>
+                <div class="check" ng-show="!adm" ng-repeat="cargo in cargos" ng-click="adicionarCargo(cargo)">
+                    <input class="checkBox"  type="checkbox" value="cargo">
+                        {{cargo}}
+                    </input>
+                </div>
             </div>
-        </div>
-        
-        <button class="entrar" ng-click="att()">Atualizar</button>
-        <button class="excluir" ng-click="excluir()">Excluir</button>
-        <button class="excluir" ng-click="analizando=false">Voltar</button>
-    </form>
-</div>
-<div class="box" ng-show="adicionando">
-    <form class="form">
-        <div class="sub-form">
-            <label>Nome: </label>
-            <input class="input" ng-model="user.nome"  type="text"></input>
-        </div>
-        <button class="entrar" ng-click="adicionarUsuario(user)">Adicionar</button>
-        <button class="excluir" ng-click="adicionando=false">Voltar</button>
-    </form>
+            <button class="entrar" ng-click="att()">
+                Atualizar
+            </button>
+            <button class="excluir" ng-click="excluir()">
+                Excluir
+            </button>
+            <button class="excluir" ng-click="analizando=false">
+                Voltar
+            </button>
+        </form>
+    </div>
+    <div class="box" ng-show="adicionando">
+        <form class="form">
+            <div class="sub-form">
+                <label>
+                    Nome: 
+                </label>
+                <input class="input" ng-model="user.nome"  type="text"></input>
+            </div>
+            <button class="entrar" ng-click="adicionarUsuario(user)">
+                Adicionar
+            </button>
+            <button class="excluir" ng-click="adicionando=false">
+                Voltar
+            </button>
+        </form>
+    </div>
 </div>

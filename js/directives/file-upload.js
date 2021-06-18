@@ -13,8 +13,8 @@ angular.module("sistemaManutencao").directive('fileUpload', function(usuarioServ
                         localUserAPI.atualizarImagem(data.data.imagem)
                     })
                 })
-                .catch(function(error){
-                    console.log(error)   
+                .catch(function(){
+                     
                 })
           });
       }

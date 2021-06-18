@@ -1,9 +1,6 @@
 angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", function ($scope,pesquisaAPI, $location, clientes) {
-	
     $scope.clientes=clientes.data;
-	
     $scope.clientesFiltrados=$scope.clientes;
-
     $scope.analizar=function(cliente_id){
         $location.path("/cliente/"+cliente_id);
         $location.replace();
@@ -15,5 +12,4 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
             $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
         }
       }
-     
 });

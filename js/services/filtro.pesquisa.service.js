@@ -1,5 +1,4 @@
-angular.module("sistemaManutencao").service("pesquisaAPI", function ( ) {
-	
+angular.module("sistemaManutencao").service("pesquisaAPI", function () {
     this.filtrar=function (palavra,clientes) {
         lista=[];
         novaLista=[]
@@ -36,5 +35,4 @@ angular.module("sistemaManutencao").service("pesquisaAPI", function ( ) {
         }
         return clientesFiltrados;
       }
-    
 });

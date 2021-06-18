@@ -1,15 +1,26 @@
-
 <div class="tabela">
     <div class="estado">
-        <label class="item top"> Estado</label>
-        <a href="" ng-class="classe(pedido.state)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">{{pedido.estado}}</a>
+        <label class="item top"> 
+            Estado
+        </label>
+        <a href="" ng-class="classe(pedido.state)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+            {{pedido.estado}}
+        </a>
     </div>
     <div class="itens">
-        <label class="item top"> Equipamento</label>
-        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</a>
+        <label class="item top"> 
+            Equipamento
+        </label>
+        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+            {{pedido.equipamento.nome}} {{pedido.equipamento.marca}}
+        </a>
     </div>
     <div class="data">
-        <label class="item top"> Data da solicitação</label>
-        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">{{pedido.dataEntrada| date:'dd/MM/yyyy'}}</a>
+        <label class="item top"> 
+            Data da solicitação
+        </label>
+        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+            {{pedido.dataEntrada| date:'dd/MM/yyyy'}}
+        </a>
     </div>
 </div>

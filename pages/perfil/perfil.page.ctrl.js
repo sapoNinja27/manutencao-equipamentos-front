@@ -1,6 +1,4 @@
 angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scope,authAPI,localUserAPI ,$location,usuarioService,storageAPI) {
-	
-
     $scope.user=storageAPI.getLocalUser();
 	$scope.voltar=function(){
         $location.path("/menu");
@@ -25,14 +23,11 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
         }
     }
     $scope.checar=function(senha){
-
         if(senha.confirmar!=senha.nova){
             $scope.diferente=true;
         }else{
             $scope.diferente=false;
         }
-        
-
         if(senha.nova.match(new RegExp("[0-9]")) 
             && senha.nova.match(new RegExp("[a-z]")) 
             && senha.nova.match(new RegExp("[A-Z]"))){
@@ -55,10 +50,6 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
         }else{
             $scope.erro3="";
         }
-
-
-
-
         if(senha.confirmar=="" || senha.confirmar==null){
             $scope.diferente=false;
         }

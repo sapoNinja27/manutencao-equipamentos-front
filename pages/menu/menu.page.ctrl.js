@@ -1,9 +1,6 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,storageAPI) {
-    
     $scope.user=storageAPI.getLocalUser();
-    if( $scope.user.perfil=="ADMIN"){
-
-    }else{
+    if( $scope.user.perfil!="ADMIN"){
         let rec=false
         $scope.user.perfil.forEach(perfil => {
             if(perfil=="RECEPCIONISTA"){
@@ -29,7 +26,6 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope,
     $scope.configurarUser=function(){
         $location.path("/configUser");
     }
-    
     $scope.acessoRestrito=function(){
         let aprovado = false;
         if($scope.user.perfil=="ADMIN"){
@@ -42,7 +38,6 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope,
             });
         }
         return aprovado;
-        
     }
     $scope.adm=function(){
         let aprovado = false;
@@ -50,6 +45,5 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope,
             aprovado = true;
         }
         return aprovado;
-        
     }
 });

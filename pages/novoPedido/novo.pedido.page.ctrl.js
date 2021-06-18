@@ -1,10 +1,8 @@
-angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope,pesquisaAPI, $location,ordemService,equipamentoService, clientes,equipamentos,marcas,storageAPI) {
-	
+angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope,pesquisaAPI, $location,ordemService,equipamentoService, clientes,equipamentos,marcas) {
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
     $scope.marcas=marcas.data;
     $scope.newEquipamento=[];
-
     $scope.pdeFechar=true;
     $scope.clientesFiltrados=$scope.clientes;
     $scope.nome=""
@@ -24,7 +22,6 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             marca:$scope.marca,
             problema:$scope.problemas,
             cliente:cli
-
         }
         if($scope.marca=="Novo"){
             let novaMarca={
@@ -50,7 +47,6 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
             sendOrdem(ordem);
         }
-        
     }
     var sendOrdem=function(ordem){
         if(ordem.cliente!=null){
@@ -87,7 +83,6 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     }
     //checar se vai adicionar nova marca ou equipamento
     $scope.novo=function(item){
-        
         if(item=="marca"){
             if($scope.marca=="Novo"){
                 return true;
@@ -98,20 +93,16 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                 return true;
             }
         }
-        
         return false;
     }
-    
-
-
-$scope.checarTamanho=function(){
-    if($scope.problemas.length<10 && $scope.problemas.length>0){
-        $scope.badDescription=true;
-    }else{
-        $scope.badDescription=false;
+    $scope.checarTamanho=function(){
+        if($scope.problemas.length<10 && $scope.problemas.length>0){
+            $scope.badDescription=true;
+        }else{
+            $scope.badDescription=false;
+        }
     }
-}
-// campos cliente
+    //campos cliente
     $scope.selecionar=function(nome) {
         $scope.nome=nome;
         $scope.show=false;
@@ -129,9 +120,6 @@ $scope.checarTamanho=function(){
     $scope.toggle=function() { 
         $scope.show=!$scope.show;
     }
-
-
-
     $scope.filtrar=function (palavra) {
         if(palavra.length==0){
             $scope.show=false;
@@ -145,8 +133,6 @@ $scope.checarTamanho=function(){
             }
         }
         $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
-
-        
       }
       $scope.voltar=function(){
         $location.path("/menu");

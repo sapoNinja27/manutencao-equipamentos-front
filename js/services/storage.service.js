@@ -1,6 +1,4 @@
 angular.module("sistemaManutencao").service("storageAPI", function ( STORAGE_KEYS) {
-	
-
     this.getLocalUser=function(){
         let usr = localStorage.getItem(STORAGE_KEYS.localUser);
         if(usr==null){

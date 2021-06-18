@@ -5,8 +5,6 @@
 	<!-- angular -->
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.js"></script>
-
-
 	<!-- app -->
 	<link rel="stylesheet" type="text/css" href="app.css">
 	<script src="app.js"></script>
@@ -41,53 +39,47 @@
 	<!-- configurar usuarios -->
 	<script src="pages/configUser/config.user.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/configUser/config.user.page.css">
-	
 	<!-- services -->
 	<script src="js/services/domain/cliente.service.js"></script>
 	<script src="js/services/domain/equipamento.service.js"></script>
 	<script src="js/services/domain/ordem.service.js"></script>
 	<script src="js/services/auth.service.js"></script>
 	<script src="js/services/storage.service.js"></script>
-	<script src="js/config/storage.keys.js"></script>
-	<script src="js/config/configValue.js"></script>
-	<script src="app.router.ctrl.js"></script>
 	<script src="js/services/domain/usuario.service.js"></script>
 	<script src="js/services/filtro.pesquisa.service.js"></script>
 	<script src="js/services/domain/local.user.service.js"></script>
-
+	<!-- configs -->
+	<script src="js/config/storage.keys.js"></script>
+	<script src="js/config/configValue.js"></script>
+	<script src="app.router.ctrl.js"></script>
 	<!-- directives -->
 	<script src="js/directives/file-upload.js"></script>
-
-
+	<!-- interceptors -->
 	<script src="js/interceptors/auth.interceptor.js"></script>
 	<script src="js/interceptors/error.interceptor.js"></script>
-	<!-- <script src="js/interceptors/cors.validator.interceptor.js"></script> -->
 	<script src="js/config/InterceptorsConfig.js"></script>
-
-	
-	<!-- <script src="js/interceptors/auth-interceptor.js"></script> -->
-
-
-
-	<!-- <script src="pages/perfil/perfil.page.ctrl.js"></script>  
-	<link rel="stylesheet" type="text/css" href="pages/perfil/perfil.page.css"> -->
-
-	
-	
 </head>
 <body >
 	<div class="toolbar" ng-show="home()" ng-controller="menuCtrl">
-		<label class="title">{{pagina}}</label>
+		<label class="title">
+			{{pagina}}
+		</label>
 		<div class="user">
-			<a href="" ng-click="perfil()", class="username">{{user.nomeNormal}} </a>
-			<label title="{{descricao}}">{{cargo}}</label>
+			<a href="" ng-click="perfil()", class="username">
+				{{user.nomeNormal}} 
+			</a>
+			<label title="{{descricao}}">
+				{{cargo}}
+			</label>
 		</div>
-		<label for="icone" ><img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img></label>
-		<a href="" ng-click="deslogar()" class="sair">Sair</a>
+		<label for="icone" >
+			<img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img>
+		</label>
+		<a href="" ng-click="deslogar()" class="sair">
+			Sair
+		</a>
 	</div>
-	<input data-file-upload id="icone" ng-model="img" style="visibility:hidden;"	type="file">
-	
-	
+	<input data-file-upload id="icone" ng-model="img" style="visibility:hidden;" type="file"></input>
 	<div ng-view></div>
 </body>
 </html>

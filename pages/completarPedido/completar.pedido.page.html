@@ -1,65 +1,93 @@
-
-<div class="box" ng-show="!imgShow">
-    <form class="form">
-        <h2>{{pedido.equipamento.nome}} {{pedido.equipamento.marca}}</h2>
-        
-        <div class="sub-form">
-            <div class="titulo">
-                <div class="sub">
-                    <label>Cliente: {{pedido.cliente.nome}}</label>
+<div>
+    <div class="box" ng-show="!imgShow">
+        <form class="form">
+            <h2>
+                {{pedido.equipamento.nome}} {{pedido.equipamento.marca}}
+            </h2>
+            <div class="sub-form">
+                <div class="titulo">
+                    <div class="sub">
+                        <label>
+                            Cliente: {{pedido.cliente.nome}}
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="sub-form">
-            <div class="titulo">
-                <div class="sub">
-                    <label >Problema: {{pedido.problema}}</label>
+            <div class="sub-form">
+                <div class="titulo">
+                    <div class="sub">
+                        <label>
+                            Problema: {{pedido.problema}}
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="sub-form">
-            <div class="titulo">
-                <div class="sub">
-                    <label >Estado: {{pedido.estado}}</label>
+            <div class="sub-form">
+                <div class="titulo">
+                    <div class="sub">
+                        <label>
+                            Estado: {{pedido.estado}}
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div   ng-show="analista()" class="sub-form">
-            <div class="titulo">
-                <div class="sub">
-                    <label >Adicionar Analize:</label>
-                   <textarea ng-model="analize" class="txtBox" rows="3"  cols="50"></textarea>
+            <div ng-show="analista()" class="sub-form">
+                <div class="titulo">
+                    <div class="sub">
+                        <label >
+                            Adicionar Analize:
+                        </label>
+                       <textarea ng-model="analize" class="txtBox" rows="3"  cols="50"></textarea>
+                    </div>
+                </div>
+                <div class="titulo">
+                    <div class="sub">
+                        <label >
+                            Valor :
+                        </label>
+                        <input class="txtBox" ng-model="valor"  type="text"></input>
+                    </div>
+                </div>
+                <div class="adicionarImagens">
+                    <label for="img"  class="addImagens">
+                        Adicionar imagens
+                    </label>
+                </div>
+                <input id="img" class="invsible-input" type="file" multiple="true"></input>
+                <button class="entrar"  ng-click="enviar()">
+                    Enviar
+                </button>
+                <button class="excluir"  ng-click="recusar(pedido.id)">
+                    Recusar
+                </button>
+                <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">
+                    Cancelar
+                </button>
+                <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">
+                    Finalizar
+                </button>
+                <button class="excluir"  ng-click="voltar()">
+                    Voltar
+                </button>
+            </div>
+            <div   ng-if="pedido.state!='ANALIZE_PENDENTE'" class="sub-form">
+                <div class="titulo">
+                    <div class="sub">
+                        <label>
+                            Analize do Tecnico: {{pedido.problemasExtras}}
+                        </label>
+                        <label>
+                            Valor: {{pedido.valor| currency:'R$'}}
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="titulo">
-                <div class="sub">
-                    <label >Valor :</label>
-                    <input   class="txtBox" ng-model="valor"  type="text"></input>
-                </div>
+                <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" ng-click="expandir(foto)" src="{{foto}}"></img>
             </div>
-            <div class="adicionarImagens">
-                <label for="img"  class="addImagens">Adicionar imagens</label>
-            </div>
-            <input id="img"  style="visibility:hidden;" type="file" multiple>
-            <button class="entrar"  ng-click="enviar()">Enviar</button>
-            <button class="excluir"  ng-click="recusar(pedido.id)">Recusar</button>
-            <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">Cancelar</button>
-            <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">Finalizar</button>
-            <button class="excluir"  ng-click="voltar()">Voltar</button>
-        </div>
-        <div   ng-if="pedido.state!='ANALIZE_PENDENTE'" class="sub-form">
-            <div class="titulo">
-                <div class="sub">
-                    <label >Analize do Tecnico: {{pedido.problemasExtras}}</label>
-                    <label >Valor: {{pedido.valor| currency:'R$'}}</label>
-                </div>
-            </div>
-        </div>
-        <div class="titulo">
-            <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" ng-click="expandir(foto)" src="{{foto}}">
-        </div>
-    </form>
-</div>
-<div ng-show="imgShow">
-    <img ng-click="imgShow=false"  title="{{ImagemGrande}}" src="{{ImagemGrande}}">
+        </form>
+    </div>
+    <div ng-show="imgShow">
+        <img ng-click="imgShow=false"  title="{{ImagemGrande}}" src="{{ImagemGrande}}"></img>
+    </div>
 </div>
