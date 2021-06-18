@@ -11,9 +11,9 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		}
 	});
 	$routeProvider.when("/menu", {
-		templateUrl: "pages/menu/menu.page.html",
+		templateUrl: "pages/menuPage/menu.page.html",
 		controller: "menuPageCtrl",
-		StyleSheet:"pages/menu/menu.page.css",
+		StyleSheet:"pages/menuPage/menu.page.css",
 		resolve: {
 			usuario: function (storageAPI) {
 				return (storageAPI.getLocalUser());

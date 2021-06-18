@@ -1,0 +1,22 @@
+<div>
+	<div class="toolbar" ng-show="home()" ng-controller="menuCtrl">
+		<label class="title">
+			{{pagina}}
+		</label>
+		<div class="user">
+			<a href="" ng-click="perfil()" class="username">
+				{{user.nomeNormal}} 
+			</a>
+			<label title="{{descricao}}">
+				{{cargo}}
+			</label>
+		</div>
+		<label for="icone" >
+			<img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img>
+		</label>
+		<a href="" ng-click="deslogar()" class="sair">
+			Sair
+		</a>
+	</div>
+	<input data-file-upload="true" id="icone" ng-model="img" class="invsible-input" type="file"></input>
+</div>

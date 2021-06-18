@@ -8,13 +8,14 @@
 	<!-- app -->
 	<link rel="stylesheet" type="text/css" href="app.css">
 	<script src="app.js"></script>
-	<script src="menu.ctrl.js"></script>
+	<!-- menu -->
+	<script src="pages/menu/menu.ctrl.js"></script>
 	<!-- homepage -->
 	<script src="pages/home/home.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/home/home.page.css">
 	<!-- menuPage -->
-	<script src="pages/menu/menu.page.ctrl.js"></script>  
-	<link rel="stylesheet" type="text/css" href="pages/menu/menu.page.css">
+	<script src="pages/menuPage/menu.page.ctrl.js"></script>  
+	<link rel="stylesheet" type="text/css" href="pages/menuPage/menu.page.css">
 	<!-- perfilPage -->
 	<script src="pages/perfil/perfil.page.ctrl.js"></script>  
 	<link rel="stylesheet" type="text/css" href="pages/perfil/perfil.page.css">
@@ -60,26 +61,7 @@
 	<script src="js/config/InterceptorsConfig.js"></script>
 </head>
 <body >
-	<div class="toolbar" ng-show="home()" ng-controller="menuCtrl">
-		<label class="title">
-			{{pagina}}
-		</label>
-		<div class="user">
-			<a href="" ng-click="perfil()", class="username">
-				{{user.nomeNormal}} 
-			</a>
-			<label title="{{descricao}}">
-				{{cargo}}
-			</label>
-		</div>
-		<label for="icone" >
-			<img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img>
-		</label>
-		<a href="" ng-click="deslogar()" class="sair">
-			Sair
-		</a>
-	</div>
-	<input data-file-upload id="icone" ng-model="img" style="visibility:hidden;" type="file"></input>
+	<div ng-include="'pages/menu/menu.html'"></div>
 	<div ng-view></div>
 </body>
 </html>
