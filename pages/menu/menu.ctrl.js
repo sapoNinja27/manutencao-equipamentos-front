@@ -1,7 +1,6 @@
 angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $location,storageAPI) {
     $scope.home=function(){
         if($location.path()=="/home"){
-            console.log("nao ta carregando user aqui")
             return false
         }else{
             let pagina=$location.path();
@@ -40,24 +39,25 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $lo
             return true;
         }
     }
-    if($scope.home()){
-        $scope.usuario=function(){
-            return $scope.user.nomeNormal
+    $scope.usuario=function(){
+        if($scope.user==null){
+            return "vazio"
         }
-        $scope.imagem=function(){
-            $scope.user=storageAPI.getLocalUser();
-            if($scope.user.imagem==null){
-                return "res/logo.png"
-            }else{
-                return $scope.user.imagem
-            }
+        return $scope.user.nomeNormal
+    }
+    $scope.imagem=function(){
+        $scope.user=storageAPI.getLocalUser();
+        if($scope.user==null){
+            return "res/logo.png"
+        }else{
+            return $scope.user.imagem
         }
-        $scope.deslogar=function(){
-            $location.path("/home");
-            $location.replace();
-        }
-        $scope.perfil=function(){
-            $location.path("/perfil");
-        }
+    }
+    $scope.deslogar=function(){
+        $location.path("/home");
+        $location.replace();
+    }
+    $scope.perfil=function(){
+        $location.path("/perfil");
     }
 });
