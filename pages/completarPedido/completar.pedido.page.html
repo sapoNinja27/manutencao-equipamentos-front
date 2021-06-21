@@ -53,7 +53,7 @@
                         Adicionar imagens
                     </label>
                 </div>
-                <input id="img" class="invsible-input" type="file" multiple="true"></input>
+                <input data-file="true" id="img" ng-model="img" class="invsible-input" type="file" multiple=true></input>
                 <button class="entrar"  ng-click="enviar()">
                     Enviar
                 </button>

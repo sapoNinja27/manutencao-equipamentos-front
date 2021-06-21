@@ -13,7 +13,7 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
             }
             ordemAtualizada.valor=$scope.valor;
             let semImagem=false;
-            if(document.getElementById('img').files[0]==null){
+            if($scope.img==null){
                 semImagem=true;
             }
             if(semImagem){
@@ -24,19 +24,10 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
             
                 })
             }else{
-                //aqui ta calculando quantos arquivos vai vir no file
-                let cont=-1;
-                let f=[];
-                do{
-                    cont++;
-                    f[cont]=document.getElementById('img').files[cont];
-                }while(f[cont]!=null)
-                //aqui ele vai fazer as requisiçoes, na ultima ele termina a analize tambem
-                for(let i=0;i<cont;i++){
-                    let f=document.getElementById('img').files[i];
-                    ordemService.addFotos($scope.pedido.id,f)
+                for(let i=0;i<$scope.img.length;i++){
+                    ordemService.addFotos($scope.pedido.id,$scope.img[i])
                     .then(function(data){
-                        if(i==cont-1){
+                        if(i==$scope.img.length-1){
                             ordemService.analizar($scope.pedido.id,ordemAtualizada).then(function(data){
                                 $location.path("/listarPedidos");
                                 $location.replace();
@@ -46,7 +37,7 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
                         }
                     })
                     .catch(function(error){
-                        
+                        console.log(error)
                     })
                 }
             }
