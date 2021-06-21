@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", function ($scope,pesquisaAPI, $location, clientes) {
+angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", function ($scope,formatadorAPI,pesquisaAPI, $location, clientes) {
     $scope.clientes=clientes.data;
     $scope.clientesFiltrados=$scope.clientes;
     $scope.analizar=function(cliente_id){
@@ -6,6 +6,7 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
         $location.replace();
     }
     $scope.filtrar=function (palavra) {
+        $scope.nome=formatadorAPI.formatar(palavra)
         if(palavra.length==0){
             $scope.clientesFiltrados=$scope.clientes;
         }else{

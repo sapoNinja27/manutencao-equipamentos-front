@@ -16,6 +16,10 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
             $scope.usuarios.splice(i, 1);
         }
     }
+    $scope.voltar=function(){
+        $scope.analizando=false;
+        $route.reload();
+    }
     $scope.usuariosFiltrados=$scope.usuarios;
     $scope.analizar=function(usuario){
         $scope.analizando=true;

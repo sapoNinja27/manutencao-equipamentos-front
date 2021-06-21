@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope,pesquisaAPI, $location,ordemService,equipamentoService, clientes,equipamentos,marcas) {
+angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($scope,pesquisaAPI,formatadorAPI, $location,ordemService,equipamentoService, clientes,equipamentos,marcas) {
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
     $scope.marcas=marcas.data;
@@ -121,6 +121,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         $scope.show=!$scope.show;
     }
     $scope.filtrar=function (palavra) {
+        $scope.nome=formatadorAPI.formatar(palavra)
         if(palavra.length==0){
             $scope.show=false;
             $scope.invalido=false;

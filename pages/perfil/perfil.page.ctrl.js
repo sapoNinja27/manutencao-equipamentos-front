@@ -116,7 +116,7 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
                         $location.path("/menu");
                         $location.replace();
                     }).catch(function(error){
-
+                        
                     });
                 }else{
                     alert("Preencha corretamente os campos")

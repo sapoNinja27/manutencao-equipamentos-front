@@ -4,7 +4,7 @@
             <label>
                 Pesquisar
             </label>
-            <input class="input" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
+            <input class="input tinner" ng-model="nome"  type="text"  ng-keyup="filtrar(nome)"></input>
             <button class="novo" ng-click="novoUsuario()">
                 Novo
             </button>
@@ -19,7 +19,7 @@
             <div class="cargo">
                 <label class="item top">Cargo</label>
                 <label href="" class="item" ng-repeat="usuario in usuariosFiltrados" >
-                    <a href="" class="link" ng-repeat="perfil in usuario.perfil"ng-click="analizar(usuario)">
+                    <a href="" class="link" ng-repeat="perfil in usuario.perfil" ng-click="analizar(usuario)">
                         {{perfil}}
                     </a>
                 </label>
@@ -54,7 +54,7 @@
             <button class="excluir" ng-click="excluir()">
                 Excluir
             </button>
-            <button class="excluir" ng-click="analizando=false">
+            <button class="excluir" ng-click="voltar()">
                 Voltar
             </button>
         </form>
