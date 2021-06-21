@@ -10,21 +10,19 @@
             </button>
         </div>
         <div class="tabela">
-            <div class="nome">
-                <label class="item-titulo"> 
-                    Usuario
-                </label>
+            <div class="usuario">
+                <label class="item top">Usuario</label>
                 <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
                     {{usuario.nome}}
                 </a>
             </div>
-            <div class="documento">
-                <label class="item-titulo"> Cargo</label>
-                <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
-                    <label ng-repeat="perfil in usuario.perfil">
+            <div class="cargo">
+                <label class="item top">Cargo</label>
+                <label href="" class="item" ng-repeat="usuario in usuariosFiltrados" >
+                    <a href="" class="link" ng-repeat="perfil in usuario.perfil"ng-click="analizar(usuario)">
                         {{perfil}}
-                    </label>
-                </a>
+                    </a>
+                </label>
             </div>
         </div> 
     </div>

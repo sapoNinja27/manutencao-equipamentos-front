@@ -9,7 +9,7 @@
 }
 .novo{
     margin-bottom:1px;
-    margin-top: 0px;
+    margin-top: 5px;
     display: block;
     width: 20%;
     background-color: rgb(183, 218, 250);
@@ -21,4 +21,17 @@
 }
 .novo:active{
     background-color: rgb(79, 110, 138);
+}
+.usuario{
+    width: 75%;
+    background-color: rgb(183, 218, 250);
+}
+.cargo{
+    width: 25%;
+    background-color: rgb(183, 218, 250);
+}
+.link{
+    color: black;
+    font-size: 85%;
+    text-decoration: none;
 }
