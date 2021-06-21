@@ -7,3 +7,18 @@
 .checkBox{
     align-self: flex-start;
 }
+.novo{
+    margin-bottom:1px;
+    margin-top: 0px;
+    display: block;
+    width: 20%;
+    background-color: rgb(183, 218, 250);
+    border: 2px solid rgb(45, 64, 95);
+    border-radius: 3px;
+}
+.novo:hover{
+    background-color: rgb(116, 160, 201);
+}
+.novo:active{
+    background-color: rgb(79, 110, 138);
+}

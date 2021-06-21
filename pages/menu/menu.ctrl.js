@@ -17,6 +17,10 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $lo
                 $scope.pagina= "Manutenções"
             }else if(pagina=="configUser"){
                 $scope.pagina= "Configuração de Usuarios"
+            }else if(pagina=="pedido"){
+                $scope.pagina= "Manutenção"
+            }else if(pagina=="cliente"){
+                $scope.pagina= "Editar Cliente"
             }
             $scope.user=storageAPI.getLocalUser();
             if($scope.user.perfil=="ADMIN"){

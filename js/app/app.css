@@ -1,6 +1,17 @@
 body{
     background-color: rgb(237, 247, 250);
 }
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content:right;
+    align-items: center;
+    background-color: rgb(202, 221, 255);
+    border: 2px solid rgb(85, 129, 204);
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
 .sub{
     width: 50%;
     display: flex;
@@ -21,6 +32,10 @@ body{
     flex-direction: column;
     width: 400px;
 }
+.box{
+    display: flex;
+    justify-content:center;
+  }
 .input{
     width: 100%;
 }
@@ -35,6 +50,68 @@ h1{
 }
 .txtBox{
     width: 400px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     font-family: Calibri;
+}
+.excluir{
+    margin-bottom:1px;
+    margin-top: 0px;
+    display: block;
+    width: 100%;
+    background-color: rgb(221, 20, 20);
+    border: 2px solid rgb(85, 1, 1);
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+}
+.excluir:hover{
+    background-color: rgb(162, 16, 16);
+}
+.excluir:active{
+    background-color: rgb(116, 13, 13);
+}
+.entrar{
+    margin-bottom:1px;
+    margin-top: 0px;
+    display: block;
+    width: 100%;
+    background-color: rgb(183, 218, 250);
+    border: 2px solid rgb(45, 64, 95);
+    border-radius: 3px;
+}
+.entrar:hover{
+    background-color: rgb(116, 160, 201);
+}
+.entrar:active{
+    background-color: rgb(79, 110, 138);
+}
+
+.title{
+    justify-content:left;
+    flex-grow:10;
+    padding-left: 20px;
+    font-size: 22px;
+}
+.sair{
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+    align-self: flex-end;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.username{
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+}
+.icon{
+    width: 60px;
+    height: 60px;
+    align-self: flex-end;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    font-size: 17px;
 }
