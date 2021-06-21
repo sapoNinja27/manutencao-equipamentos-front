@@ -8,7 +8,7 @@ angular.module("sistemaManutencao").factory("errorInterceptor", function ($q) {
 			}else if(rejection.status==403){
 				alert("Acesso Negado")
 			}else if(rejection.status==422){
-				alert("Dados invalidos")
+				alert(rejection.data.errors[0].message)
 			}
 			return $q.reject(rejection);
 		}

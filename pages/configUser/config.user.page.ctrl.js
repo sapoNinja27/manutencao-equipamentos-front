@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,storageAPI,$route,usuarios,usuarioService) {
+angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,pesquisaAPI,storageAPI,$route,usuarios,usuarioService) {
     $scope.usuarios=usuarios.data;
     $scope.cargos=[
         "TECNICO",
@@ -108,39 +108,8 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     $scope.filtrar=function (palavra) {
         if(palavra.length==0){
             $scope.usuariosFiltrados=$scope.usuarios;
-        }
-        novaLista=[]
-        for(let i=0;i<$scope.usuarios.length;i++){
-            novaLista[i]={nome: "", perfil:[]}
-            for(let j=0;j<palavra.length;j++){
-                if($scope.usuarios[i].nome.charAt(j)==palavra.charAt(j)){
-                    novaLista[i].nome=$scope.usuarios[i].nome;
-                    novaLista[i].perfil[0]=$scope.usuarios[i].perfil[0];
-                    atualizar(novaLista);
-                }else{
-                    novaLista[i]={nome: "", perfil:[]}
-                    atualizar(novaLista);
-                }
-            }
-        }
-      }
-      var atualizar=function(lista){
-        let palavras="";
-        for(let i=0;i<lista.length;i++){
-            if(lista[i].nome!=""){
-                palavras+="´"+lista[i].nome+"^"+lista[i].perfil[0];
-            }
-        }
-        palavrasArray=palavras.split("´");
-        $scope.usuariosFiltrados=[];
-        for(let i=1;i<palavrasArray.length;i++){
-            value=palavrasArray[i].split("^");
-            $scope.usuariosFiltrados[i-1]={
-                nome:value[0],
-                perfil:[
-                    value[1]
-                ]
-            }
+        }else{
+            $scope.usuariosFiltrados=pesquisaAPI.filtrar(palavra,$scope.usuarios);
         }
       }
 });
