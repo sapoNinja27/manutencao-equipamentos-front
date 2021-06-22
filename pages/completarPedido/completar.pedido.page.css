@@ -10,6 +10,7 @@
   
 }
 .addImagens:hover{
+  cursor: pointer;
   background-color: rgb(116, 160, 201);
 }
 .addImagens:active{

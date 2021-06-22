@@ -17,6 +17,7 @@
     border-radius: 3px;
 }
 .novo:hover{
+    cursor: pointer;
     background-color: rgb(116, 160, 201);
 }
 .novo:active{
