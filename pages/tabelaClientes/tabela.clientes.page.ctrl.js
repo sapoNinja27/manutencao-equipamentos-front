@@ -11,7 +11,8 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
     let active;
     let hover;
     $scope.filtrar=function (palavra) {
-        $scope.nome=formatadorAPI.formatar(palavra)
+        $scope.nome=formatadorAPI.formatar(palavra);
+        palavra=formatadorAPI.formatar(palavra);
         if(palavra.length==0){
             $scope.clientesFiltrados=$scope.clientes;
         }else{
