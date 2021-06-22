@@ -29,6 +29,7 @@ angular.module("sistemaManutencao").service("pesquisaAPI", function () {
         for(let i=1;i<palavrasArray.length;i++){
             value=palavrasArray[i].split("^");
             clientesFiltrados[i-1]={
+                id: i+1,
                 nome:value[0],
                 cpf:value[1]
             }
