@@ -9,7 +9,6 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     let cargosNormais=[];
     let cargoADM="ADM";
     let localUser=storageAPI.getLocalUser();
-    let achou=false;
     let clicked;
     let active;
     let hover;

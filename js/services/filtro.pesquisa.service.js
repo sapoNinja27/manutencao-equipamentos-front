@@ -3,38 +3,43 @@ angular.module("sistemaManutencao").service("pesquisaAPI", function () {
         lista=[];
         novaLista=[]
         for(let i=0;i<clientes.length;i++){
-            lista[i]={nome: ""}
             for(let j=0;j<palavra.length;j++){
+                lista[i]=0;
                 if(clientes[i].nome.includes(palavra)){
-                    lista[i].nome=clientes[i].nome;
-                    lista[i].cpf=clientes[i].cpf;
+                    lista[i]=clientes[i].id;
                     novaLista=atualizar(lista);
                 }else{
-                    lista[i]={nome: ""}
+                    lista[i]=null
                     novaLista=atualizar(lista);
                 }
             }
         }
+        novaLista=refazerLista(novaLista,clientes);
         return novaLista;
       }
        var atualizar=function(lista){
         let palavras="";
         for(let i=0;i<lista.length;i++){
-            if(lista[i].nome!=""){
-                palavras+="´"+lista[i].nome+"#"+i+"^"+lista[i].cpf;
+            if(lista[i]!=null){
+                palavras+=":"+lista[i];
             }
         }
-        palavrasArray=palavras.split("´");
+        palavrasArray=palavras.split(":");
         clientesFiltrados=[];
         for(let i=1;i<palavrasArray.length;i++){
-            value=palavrasArray[i].split("^");
-            id=value[0].split("#")[1];
-            clientesFiltrados[i-1]={
-                id: parseInt(id)+1,
-                nome:value[0].split("#")[0],
-                cpf:value[1]
-            }
+            clientesFiltrados[i-1]=palavrasArray[i]
         }
         return clientesFiltrados;
+      }
+      var refazerLista=function(listaNova,listaVelha){
+        for(let i=0;i<listaNova.length;i++){
+            for(let j=0;j<listaVelha.length;j++){
+                if(listaNova[i]==listaVelha[j].id){
+                    listaNova[i]=null;
+                    listaNova[i]=listaVelha[j];
+                }
+            }
+        }
+        return listaNova;
       }
 });
