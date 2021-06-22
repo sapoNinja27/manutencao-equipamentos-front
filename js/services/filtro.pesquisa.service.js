@@ -21,16 +21,17 @@ angular.module("sistemaManutencao").service("pesquisaAPI", function () {
         let palavras="";
         for(let i=0;i<lista.length;i++){
             if(lista[i].nome!=""){
-                palavras+="´"+lista[i].nome+"^"+lista[i].cpf;
+                palavras+="´"+lista[i].nome+"#"+i+"^"+lista[i].cpf;
             }
         }
         palavrasArray=palavras.split("´");
         clientesFiltrados=[];
         for(let i=1;i<palavrasArray.length;i++){
             value=palavrasArray[i].split("^");
+            id=value[0].split("#")[1];
             clientesFiltrados[i-1]={
-                id: i+1,
-                nome:value[0],
+                id: parseInt(id)+1,
+                nome:value[0].split("#")[0],
                 cpf:value[1]
             }
         }
