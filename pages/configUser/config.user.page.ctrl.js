@@ -10,7 +10,10 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     let cargoADM="ADM";
     let localUser=storageAPI.getLocalUser();
     let achou=false;
-    $scope.usuariosFiltrados=[]
+    let clicked;
+    let active;
+    let hover;
+    $scope.usuariosFiltrados=$scope.usuarios;
     for(let i=0; i<$scope.usuarios.length;i++){
         if(localUser.nome==$scope.usuarios[i].nome){
             $scope.usuarios.splice(i, 1);
@@ -20,11 +23,37 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
         $scope.analizando=false;
         $route.reload();
     }
-    $scope.usuariosFiltrados=$scope.usuarios;
     $scope.analizar=function(usuario){
+        active=0;
+        clicked=false;
         $scope.analizando=true;
         $scope.usuario=usuario;
     }
+      $scope.style=function(index){
+          let value = "item"
+          if(!clicked){
+            if(index==hover){
+              value+=" hover"
+            }
+          }else{
+            if(index==active){
+                value+=" active"
+              }
+          }
+          return value
+      }
+      $scope.hoverIn=function (index) {
+        hover=index;
+      }
+      $scope.mouseDown=function (index) {
+        clicked=true;
+        active=index;
+      }
+      $scope.hoverOut=function(){
+          hover=0;
+          active=0;
+          clicked=false;
+      }
     $scope.novoUsuario=function(){
         $scope.adicionando=true;
     }

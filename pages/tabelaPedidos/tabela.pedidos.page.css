@@ -11,15 +11,8 @@
     width: 30%;
     background-color: rgb(183, 218, 250);
 }
-.acao{
-    background-color: rgb(71, 248, 245);
-}
-.ok{
-    background-color: rgb(0, 255, 76);
-}
-.erro{
-    background-color: rgb(255, 0, 0);
-}
+
+
 .concluido{
-    background-color: rgb(142, 160, 147);
+    background-color: rgb(64, 72, 66);
 }

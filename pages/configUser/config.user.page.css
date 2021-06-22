@@ -32,9 +32,14 @@
 }
 .link{
     color: black;
+    background-color: red;
     font-size: 85%;
+    display: block;
     text-decoration: none;
 }
 .tinner{
     width: 20%;
+}
+.bold-remove{
+    font-weight: normal;
 }

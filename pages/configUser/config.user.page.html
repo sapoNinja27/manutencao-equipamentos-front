@@ -12,17 +12,17 @@
         <div class="tabela">
             <div class="usuario">
                 <label class="item top">Usuario</label>
-                <a href="" class="item" ng-repeat="usuario in usuariosFiltrados" ng-click="analizar(usuario)">
+                <a href="" ng-mouseover="hoverIn(usuario.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(usuario.id)" ng-class="style(usuario.id)" ng-mouseUp="analizar(usuario)" ng-repeat="usuario in usuariosFiltrados">
                     {{usuario.nome}}
                 </a>
             </div>
             <div class="cargo">
                 <label class="item top">Cargo</label>
-                <label href="" class="item" ng-repeat="usuario in usuariosFiltrados" >
-                    <a href="" class="link" ng-repeat="perfil in usuario.perfil" ng-click="analizar(usuario)">
+                <a href=""  ng-mouseover="hoverIn(usuario.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(usuario.id)" ng-class="style(usuario.id)"   ng-repeat="usuario in usuariosFiltrados" >
+                    <b class = "bold-remove" ng-repeat="perfil in usuario.perfil" ng-mouseUp="analizar(usuario)">
                         {{perfil}}
-                    </a>
-                </label>
+                    </b>
+                </a>
             </div>
         </div> 
     </div>

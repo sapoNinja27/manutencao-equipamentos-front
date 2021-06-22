@@ -3,7 +3,7 @@
         <label class="item top"> 
             Estado
         </label>
-        <a href="" ng-class="classe(pedido.state)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+        <a href="" class="item" ng-style="classe(pedido.state, pedido.id)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos"  ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.estado}}
         </a>
     </div>
@@ -11,7 +11,7 @@
         <label class="item top"> 
             Equipamento
         </label>
-        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+        <a href="" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.equipamento.nome}} {{pedido.equipamento.marca}}
         </a>
     </div>
@@ -20,7 +20,7 @@
         <label class="item top"> 
             Data da solicitação
         </label>
-        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-click="analizar(pedido.id)">
+        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.dataEntrada| date:'dd/MM/yyyy'}}
         </a>
     </div>
