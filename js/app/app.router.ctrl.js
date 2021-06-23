@@ -64,12 +64,13 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 				let permitido=false;
 				if(localUser.perfil=="ADMIN"){
 					permitido=true;
+				}else{
+					localUser.perfil.forEach(perfil => {
+						if(perfil=="RECEPCIONISTA"){
+							permitido=true;
+						}
+					});
 				}
-				localUser.perfil.forEach(perfil => {
-                    if(perfil=="RECEPCIONISTA"){
-                        permitido=true;
-                    }
-				});
 				if(!permitido){
 					$location.path("/menu");
 					$location.replace();
@@ -89,12 +90,13 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 				let permitido=false;
 				if(localUser.perfil=="ADMIN"){
 					permitido=true;
+				}else{
+					localUser.perfil.forEach(perfil => {
+						if(perfil=="RECEPCIONISTA"){
+							permitido=true;
+						}
+					});
 				}
-				localUser.perfil.forEach(perfil => {
-                    if(perfil=="RECEPCIONISTA"){
-                        permitido=true;
-                    }
-				});
 				if(!permitido){
 					$location.path("/menu");
 					$location.replace();
@@ -136,12 +138,13 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 				let permitido=false;
 				if(localUser.perfil=="ADMIN"){
 					permitido=true;
+				}else{
+					localUser.perfil.forEach(perfil => {
+						if(perfil=="RECEPCIONISTA"){
+							permitido=true;
+						}
+					});
 				}
-				localUser.perfil.forEach(perfil => {
-                    if(perfil=="RECEPCIONISTA"){
-                        permitido=true;
-                    }
-				});
 				if(!permitido){
 					$location.path("/menu");
 					$location.replace();
@@ -183,12 +186,13 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 				let permitido=false;
 				if(localUser.perfil=="ADMIN"){
 					permitido=true;
+				}else{
+					localUser.perfil.forEach(perfil => {
+						if(perfil=="RECEPCIONISTA"){
+							permitido=true;
+						}
+					});
 				}
-				localUser.perfil.forEach(perfil => {
-                    if(perfil=="RECEPCIONISTA"){
-                        permitido=true;
-                    }
-				});
 				if(!permitido){
 					$location.path("/menu");
 					$location.replace();
