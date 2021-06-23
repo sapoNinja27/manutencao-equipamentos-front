@@ -19,7 +19,7 @@
                 Documento
             </label>
             <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
-                {{cliente.cpf}}
+                {{cliente.cpf | cpf}}
             </a>
         </div>
     </div>
