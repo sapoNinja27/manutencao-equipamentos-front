@@ -6,6 +6,12 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
     let clicked;
     let active;
     let hover;
+    $scope.campo='priority';
+    $scope.direcao=false;
+    $scope.orderBy=function(campo){
+        $scope.campo=campo;
+        $scope.direcao=!$scope.direcao;
+    }
     $scope.show=function(estado){
         let show=false;
         if(user=="ADMIN" || user=="RECEPCIONISTA"){

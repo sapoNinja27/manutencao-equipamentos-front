@@ -23,29 +23,32 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
         }
       }
     }
-      $scope.style=function(index){
-          let value = "item"
-          if(!clicked){
-            if(index==hover){
-              value+=" hover"
-            }
-          }else{
-            if(index==active){
-                value+=" active"
-              }
+    $scope.orderByNome=function(){
+      $scope.direcao=!$scope.direcao;
+    }
+    $scope.style=function(index){
+      let value = "item"
+      if(!clicked){
+        if(index==hover){
+          value+=" hover"
+        }
+      }else{
+        if(index==active){
+            value+=" active"
           }
-          return value
       }
-      $scope.hoverIn=function (index) {
-        hover=index;
-      }
-      $scope.mouseDown=function (index) {
-        clicked=true;
-        active=index;
-      }
-      $scope.hoverOut=function(){
-          hover=0;
-          active=0;
-          clicked=false;
-      }
+      return value
+    }  
+    $scope.hoverIn=function (index) {
+      hover=index;
+    }
+    $scope.mouseDown=function (index) {
+      clicked=true;
+      active=index;
+    }
+    $scope.hoverOut=function(){
+        hover=0;
+        active=0;
+        clicked=false;
+    }
 });

@@ -65,6 +65,18 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         }
         return show;
     }
+    $scope.tecnico=function(){
+        let show=false;
+        if(user=="ADMIN" || user=="TECNICO"){
+            show=true;
+        }else  if(user=="RECEPCIONISTA"||user=="ANALISTA"){
+            show=false;
+        }
+        if($scope.pedido.state!="MANUTENCAO_PENDENTE"){
+            show=false;
+        }
+        return show;
+    }
     $scope.secretaria=function(){
         let show=false;
         if(user=="ADMIN" || user=="RECEPCIONISTA"){
@@ -102,6 +114,9 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
 		}).catch(function(){
             
         });
+    }
+    $scope.valorF=function(){
+        $scope.valor=$scope.valor.replace(/[^0-9]+/g,"")
     }
     $scope.expandir=function(url){
         $scope.imgShow=true;

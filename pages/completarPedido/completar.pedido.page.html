@@ -45,7 +45,7 @@
                         <label >
                             Valor :
                         </label>
-                        <input class="txtBox" ng-model="valor"  type="text"></input>
+                        <input class="txtBox" ng-model="valor" ng-keyUp="valorF()" type="text"></input>
                     </div>
                 </div>
                 <div class="adicionarImagens">
@@ -62,9 +62,6 @@
                 </button>
                 <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">
                     Cancelar
-                </button>
-                <button class="entrar" ng-if="pedido.state=='MANUTENCAO_PENDENTE'"  ng-click="finalizar()">
-                    Finalizar
                 </button>
                 <button class="excluir"  ng-click="voltar()">
                     Voltar
@@ -85,6 +82,12 @@
             <div class="titulo">
                 <img  ng-repeat="foto in pedido.fotos" title="{{foto}}" ng-click="expandir(foto)" src="{{foto}}"></img>
             </div>
+            <button class="entrar" ng-if="tecnico()"  ng-click="finalizar()">
+                Finalizar
+            </button>
+            <button class="excluir" ng-show="!analista()"  ng-click="voltar()">
+                Voltar
+            </button>
         </form>
     </div>
     <div ng-show="imgShow">

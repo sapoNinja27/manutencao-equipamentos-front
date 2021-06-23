@@ -7,10 +7,10 @@
     </div>
     <div class="tabela">
         <div class="nome">
-            <label class="item top">
+            <label class="item top selected" ng-click="orderByNome()">
                 Nome
             </label>
-            <a href=""  ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)" ng-repeat="cliente in clientesFiltrados">
+            <a href=""  ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)" ng-repeat="cliente in clientesFiltrados | orderBy : 'nome': direcao ">
                 {{cliente.nome}}
             </a>
         </div>
@@ -18,7 +18,7 @@
             <label class="item top">
                 CPF
             </label>
-            <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
+            <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados | orderBy : 'nome': direcao " ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
                 {{cliente.cpf | cpf}}
             </a>
         </div>
@@ -26,7 +26,7 @@
             <label class="item top">
                 RG
             </label>
-            <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
+            <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados | orderBy : 'nome': direcao " ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
                 {{cliente.rg | rg}}
             </a>
         </div>

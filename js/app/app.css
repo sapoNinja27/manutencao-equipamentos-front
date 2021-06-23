@@ -10,6 +10,7 @@ body{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    -moz-user-select: none;
 }
 .titulo{
     display: flex;
@@ -20,6 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 400px;
+    -moz-user-select: none;
 }
 .box{
     display: flex;
@@ -97,6 +99,7 @@ h1{
     height: 70px;
     border-radius: 5px;
     margin-bottom: 30px;
+    -moz-user-select: none;
 }
 .sair{
     color: black;
@@ -145,6 +148,7 @@ h1{
     background-color: rgb(156, 185, 213);
     padding-top: 10px;
     font-size: 20px;
+    -moz-user-select: none;
 }
 .tabela{
     display: flex;
@@ -156,4 +160,7 @@ h1{
 }
 .active{
     background-color: rgb(79, 110, 138);
+}
+.selected:hover{
+    cursor: pointer;
 }

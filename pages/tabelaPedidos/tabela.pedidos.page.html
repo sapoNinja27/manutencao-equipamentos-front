@@ -1,26 +1,26 @@
 <div class="tabela">
     <div class="estado">
-        <label class="item top"> 
+        <label class="item top  selected" ng-click="orderBy('priority')"> 
             Estado
         </label>
-        <a href="" class="item" ng-style="classe(pedido.state, pedido.id)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos"  ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-mouseUp="analizar(pedido.id)">
+        <a href="" class="item" ng-style="classe(pedido.state, pedido.id)" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos | orderBy : campo : direcao "  ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.estado}}
         </a>
     </div>
     <div class="itens">
-        <label class="item top"> 
+        <label class="item top selected" ng-click="orderBy('equipamento.nome')"> 
             Equipamento
         </label>
-        <a href="" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
+        <a href="" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos | orderBy : campo : direcao " ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.equipamento.nome}} {{pedido.equipamento.marca}}
         </a>
     </div>
     
     <div class="data">
-        <label class="item top"> 
+        <label class="item top selected" ng-click="orderBy('dataEntrada')"> 
             Data da solicitação
         </label>
-        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos" ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
+        <a href="" class="item" ng-if="show(pedido.state)" ng-repeat="pedido in pedidos | orderBy : campo : direcao " ng-mouseover="hoverIn(pedido.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(pedido.id)" ng-class="style(pedido.id)" ng-mouseUp="analizar(pedido.id)">
             {{pedido.dataEntrada| date:'dd/MM/yyyy'}}
         </a>
     </div>
