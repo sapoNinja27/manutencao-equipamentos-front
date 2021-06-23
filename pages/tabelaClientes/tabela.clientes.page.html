@@ -14,12 +14,20 @@
                 {{cliente.nome}}
             </a>
         </div>
-        <div class="documento">
+        <div class="cpf">
             <label class="item top">
-                Documento
+                CPF
             </label>
             <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
                 {{cliente.cpf | cpf}}
+            </a>
+        </div>
+        <div class="rg">
+            <label class="item top">
+                RG
+            </label>
+            <a href="" ng-mouseover="hoverIn(cliente.id)" ng-mouseleave="hoverOut()" ng-mouseDown="mouseDown(cliente.id)" ng-repeat="cliente in clientesFiltrados" ng-class="style(cliente.id)" ng-mouseUp="analizar(cliente.id)">
+                {{cliente.rg | rg}}
             </a>
         </div>
     </div>

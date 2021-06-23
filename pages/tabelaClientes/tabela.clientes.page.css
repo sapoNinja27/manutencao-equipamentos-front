@@ -1,8 +1,12 @@
 .nome{
-    width: 75%;
+    width: 50%;
     background-color: rgb(183, 218, 250);
 }
-.documento{
+.cpf{
+    width: 25%;
+    background-color: rgb(183, 218, 250);
+}
+.rg{
     width: 25%;
     background-color: rgb(183, 218, 250);
 }

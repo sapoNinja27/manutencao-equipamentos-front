@@ -17,6 +17,24 @@ angular.module("sistemaManutencao").service("pesquisaAPI", function () {
         novaLista=refazerLista(novaLista,clientes);
         return novaLista;
       }
+      this.filtrarNumero=function (palavra,clientes) {
+        lista=[];
+        novaLista=[]
+        for(let i=0;i<clientes.length;i++){
+            for(let j=0;j<palavra.length;j++){
+                lista[i]=0;
+                if(clientes[i].cpf.includes(palavra) || clientes[i].rg.includes(palavra)){
+                    lista[i]=clientes[i].id;
+                    novaLista=atualizar(lista);
+                }else{
+                    lista[i]=null
+                    novaLista=atualizar(lista);
+                }
+            }
+        }
+        novaLista=refazerLista(novaLista,clientes);
+        return novaLista;
+      }
        var atualizar=function(lista){
         let palavras="";
         for(let i=0;i<lista.length;i++){

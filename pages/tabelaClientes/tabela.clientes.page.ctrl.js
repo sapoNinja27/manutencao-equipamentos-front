@@ -11,14 +11,18 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
     let active;
     let hover;
     $scope.filtrar=function (palavra) {
-        $scope.nome=formatadorAPI.formatar(palavra);
-        palavra=formatadorAPI.formatar(palavra);
-        if(palavra.length==0){
-            $scope.clientesFiltrados=$scope.clientes;
+      if(palavra.length==0){
+        $scope.clientesFiltrados=$scope.clientes;
+      }else{
+        if(palavra[0].match(/[0-9]+/g)){
+          $scope.clientesFiltrados=pesquisaAPI.filtrarNumero(palavra,$scope.clientes);
         }else{
-            $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
+          $scope.nome=formatadorAPI.formatar(palavra);
+          palavra=formatadorAPI.formatar(palavra);
+          $scope.clientesFiltrados=pesquisaAPI.filtrar(palavra,$scope.clientes);
         }
       }
+    }
       $scope.style=function(index){
           let value = "item"
           if(!clicked){
