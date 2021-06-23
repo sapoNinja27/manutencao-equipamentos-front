@@ -6,7 +6,7 @@ angular.module("sistemaManutencao").controller("homePageCtrl", function ($scope,
 				let usuario =user.data;
 				let localUser=authAPI.successfulLogin(data.headers("Authorization"),usuario)
 				if(localUser!=null){
-					$location.path("/menu/");
+					$location.path("/menu");
 					$location.replace();
 				}
 			})

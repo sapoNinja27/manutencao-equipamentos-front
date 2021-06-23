@@ -13,6 +13,8 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     let active;
     let hover;
     $scope.usuariosFiltrados=$scope.usuarios;
+
+    
     for(let i=0; i<$scope.usuarios.length;i++){
         if(localUser.nome==$scope.usuarios[i].nome){
             $scope.usuarios.splice(i, 1);

@@ -1,8 +1,14 @@
-angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $location,storageAPI) {
+angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$route, $location,storageAPI) {
     $scope.home=function(){
         if($location.path()=="/home"){
             return false
         }else{
+            let user=storageAPI.getLocalUser();
+            if(user == undefined || user == null){
+                $location.path("/home");
+                $location.replace();
+                $route.reload();
+            }
             let pagina=$location.path();
             pagina=pagina.split("/")[1]
             if(pagina=="menu"){
@@ -24,12 +30,11 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $lo
             }else if(pagina=="perfil"){
                 $scope.pagina= "Editar Perfil"
             }
-            $scope.user=storageAPI.getLocalUser();
-            if($scope.user.perfil=="ADMIN"){
+            if(user.perfil=="ADMIN"){
                 $scope.cargo="Administrador";
                 $scope.descricao="Acesso total ao aplicativo";
             }else{
-                $scope.user.perfil.forEach(perfil => {
+                user.perfil.forEach(perfil => {
                     if(perfil=="RECEPCIONISTA"){
                         $scope.cargo="Recepcionista";
                         $scope.descricao="Funções restritas a recepcionista";
@@ -46,19 +51,20 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope, $lo
         }
     }
     $scope.usuario=function(){
-        if($scope.user==null){
+        let user=storageAPI.getLocalUser();
+        if(user==null){
             return "vazio"
         }
-        return $scope.user.nomeNormal
+        return user.nomeNormal
     }
     $scope.imagem=function(){
-        $scope.user=storageAPI.getLocalUser();
-        if($scope.user==null){
+        let user=storageAPI.getLocalUser();
+        if(user==null){
             return "res/logo.png"
-        }else if($scope.user.imagem==null){
+        }else if(user.imagem==null){
             return "res/logo.png"
         }
-        return $scope.user.imagem
+        return user.imagem
     }
     $scope.deslogar=function(){
         $location.path("/home");

@@ -7,7 +7,7 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			localUser: function (storageAPI) {
 				storageAPI.setLocalUser(null);
-			},
+			}
 		}
 	});
 	$routeProvider.when("/menu", {
@@ -18,6 +18,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			usuario: function (storageAPI) {
 				return (storageAPI.getLocalUser());
 			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				if(localUser == undefined || localUser == null){
+					$location.path("/home");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
+			}
 		}
 	});
 	$routeProvider.when("/perfil", {
@@ -25,7 +34,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		controller: "perfilPageCtrl",
 		StyleSheet:"pages/perfil/perfil.page.css",
 		resolve: {
-			
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				if(localUser == undefined || localUser == null){
+					$location.path("/home");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
+			}
 		}
 	});
 	$routeProvider.when("/adicionarPedido", {
@@ -41,6 +58,24 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			},
 			equipamentos: function (equipamentoService) {
 				return equipamentoService.getEquipamentos();
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				let permitido=false;
+				if(localUser.perfil=="ADMIN"){
+					permitido=true;
+				}
+				localUser.perfil.forEach(perfil => {
+                    if(perfil=="RECEPCIONISTA"){
+                        permitido=true;
+                    }
+				});
+				if(!permitido){
+					$location.path("/menu");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
 		}
 	});
@@ -49,7 +84,24 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		controller: "novoClientePageCtrl",
 		StyleSheet:"pages/novCliente/novo.cliente.page.css",
 		resolve: {
-			
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				let permitido=false;
+				if(localUser.perfil=="ADMIN"){
+					permitido=true;
+				}
+				localUser.perfil.forEach(perfil => {
+                    if(perfil=="RECEPCIONISTA"){
+                        permitido=true;
+                    }
+				});
+				if(!permitido){
+					$location.path("/menu");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
+			}
 		}
 	});
 	$routeProvider.when("/listarPedidos", {
@@ -59,6 +111,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			pedidos: function (ordemService) {
 				return ordemService.getOrdens();
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				if(localUser == undefined || localUser == null){
+					$location.path("/home");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
 		}
 	});
@@ -69,6 +130,24 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			clientes: function (clienteService) {
 				return clienteService.getClientes();
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				let permitido=false;
+				if(localUser.perfil=="ADMIN"){
+					permitido=true;
+				}
+				localUser.perfil.forEach(perfil => {
+                    if(perfil=="RECEPCIONISTA"){
+                        permitido=true;
+                    }
+				});
+				if(!permitido){
+					$location.path("/menu");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
 		}
 	});
@@ -79,6 +158,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			pedido: function ($route,ordemService) {
 				return ordemService.getOrdem($route.current.params.id_pedido);
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				if(localUser == undefined || localUser == null){
+					$location.path("/home");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
 		}
 	});
@@ -89,7 +177,26 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			cliente: function ($route,clienteService) {
 				return clienteService.getCliente($route.current.params.id_cliente);
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				let permitido=false;
+				if(localUser.perfil=="ADMIN"){
+					permitido=true;
+				}
+				localUser.perfil.forEach(perfil => {
+                    if(perfil=="RECEPCIONISTA"){
+                        permitido=true;
+                    }
+				});
+				if(!permitido){
+					$location.path("/menu");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
+		
 		}
 	});
 	$routeProvider.when("/configUser", {
@@ -99,6 +206,15 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		resolve: {
 			usuarios: function (usuarioService) {
 				return usuarioService.getUsuarios();
+			},
+			permission: function(storageAPI,$location,$route){
+				let localUser=storageAPI.getLocalUser();
+				if(localUser.perfil!="ADMIN"){
+					$location.path("/menu");
+					$location.replace();
+					$route.reload();
+				}
+				return false;
 			}
 		}
 	});
