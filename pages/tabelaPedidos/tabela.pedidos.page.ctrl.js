@@ -1,5 +1,11 @@
 angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function ($scope, $location,pedidos,storageAPI) {
 	$scope.pedidos=pedidos.data;
+    var vizualizarPedido=false;
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+        if(next.originalPath=="/pedido/:id_pedido" && !vizualizarPedido){
+            $location.path("/menu/");
+        }
+    });
     $scope.pedidosAbertos=$scope.pedidos;
     $scope.pedidosFechados;
     let user= storageAPI.getLocalUser().perfil;
@@ -118,10 +124,10 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
         return item;
     }
     $scope.analizar=function(pedido_id){
+        vizualizarPedido=true;
         active=0;
         clicked=false;
         $location.path("/pedido/"+pedido_id);
-        $location.replace();
     }
     $scope.style=function(index){
         let value = "item"

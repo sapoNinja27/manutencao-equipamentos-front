@@ -1,17 +1,19 @@
 angular.module("sistemaManutencao").controller("clientePageCtrl", function (formatadorAPI,$scope, $location,cliente,clienteService) {
     let alerta=false;
     $scope.cliente=cliente.data;
+    let code=$scope.cliente.nome;
     $scope.excluir=function(id){
         clienteService.delete(id).then(function (data) {
 			$location.path("/listarClientes");
-            $location.replace();
 		}).catch(function(){
             
         });
     }
     $scope.voltar=function(){
         $location.path("/listarClientes");
-            $location.replace();
+    }
+    $scope.pedidos=function(){
+        $location.path("/listarPedidos").search($scope.cliente.id);
     }
     $scope.enviar=function(){
         let newCliente={

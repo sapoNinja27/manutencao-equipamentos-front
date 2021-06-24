@@ -1,4 +1,16 @@
-angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,pesquisaAPI,storageAPI,$route,usuarios,usuarioService) {
+angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,$location,pesquisaAPI,storageAPI,$route,usuarios,usuarioService) {
+    var analize=false;
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+        if(next.originalPath=="/menu"){
+            if(analize){
+                analize=false;
+                $location.path("/configUser");
+            }else{
+                $location.path("/menu");
+                $location.replace();
+            }
+        }
+    });
     $scope.usuarios=usuarios.data;
     $scope.cargos=[
         "TECNICO",
@@ -31,6 +43,7 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
     $scope.analizar=function(usuario){
         active=0;
         clicked=false;
+        analize=true;
         $scope.analizando=true;
         $scope.usuario=usuario;
     }

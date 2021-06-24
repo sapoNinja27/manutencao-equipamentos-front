@@ -83,6 +83,13 @@ h1{
 
 
 /* menu bar */
+.menu-sair{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60px;
+    justify-content:space-between;
+}
 .title{
     justify-content:left;
     flex-grow:10;
@@ -101,13 +108,15 @@ h1{
     margin-bottom: 30px;
     -moz-user-select: none;
 }
-.sair{
+.sair{  
+    padding-bottom: 7px;
+}
+.menu{
     color: black;
     font-size: 17px;
+    padding-top: 5px;
     text-decoration: none;
-    align-self: flex-end;
-    padding-right: 10px;
-    padding-left: 10px;
+    align-self:center;
 }
 .username{
     color: black;

@@ -19,6 +19,7 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 				return (storageAPI.getLocalUser());
 			},
 			permission: function(storageAPI,$location,$route){
+				$location.search("")
 				let localUser=storageAPI.getLocalUser();
 				if(localUser == undefined || localUser == null){
 					$location.path("/home");
@@ -111,8 +112,14 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 		controller: "tabelaPedidosPageCtrl",
 		StyleSheet:"pages/tabelaPedidos/tabela.pedidos.page.css",
 		resolve: {
-			pedidos: function (ordemService) {
-				return ordemService.getOrdens();
+			pedidos: function ($location,ordemService) {
+				let param =JSON.stringify($location.search())
+				if(param!="{}"){
+					param=param.split('"')[1]
+					return ordemService.getOrdensByCliente(param)
+				}else{
+					return ordemService.getOrdens();
+				}
 			},
 			permission: function(storageAPI,$location,$route){
 				let localUser=storageAPI.getLocalUser();

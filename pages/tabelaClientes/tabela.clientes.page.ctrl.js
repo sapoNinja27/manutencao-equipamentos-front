@@ -1,11 +1,17 @@
 angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", function ($scope,formatadorAPI,pesquisaAPI, $location, clientes) {
+  var vizualizarCliente=false;
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+        if(next.originalPath=="/cliente/:id_cliente" && !vizualizarCliente){
+            $location.path("/menu/");
+        }
+    });
     $scope.clientes=clientes.data;
     $scope.clientesFiltrados=$scope.clientes;
     $scope.analizar=function(cliente_id){
+      vizualizarCliente=true;
         active=0;
         clicked=false;
         $location.path("/cliente/"+cliente_id);
-        $location.replace();
     }
     let clicked;
     let active;

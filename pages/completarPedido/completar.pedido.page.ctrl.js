@@ -1,4 +1,11 @@
 angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope, $location,pedido,ordemService,storageAPI) {
+    // $scope.$on('$routeChangeStart', function(event, next, current) {
+    //     let param =JSON.stringify($location.search())
+	// 			if(param!="{}"){
+	// 				param=param.split('"')[1]
+    //                 // $location.path("/listarPedidos").search("p")
+    //             }
+    // });
     $scope.pedido=pedido.data;
     $scope.analize="";
     let user=storageAPI.getLocalUser().perfil;
@@ -19,7 +26,6 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
             if(semImagem){
                 ordemService.analizar($scope.pedido.id,ordemAtualizada).then(function(data){
                     $location.path("/listarPedidos");
-                    $location.replace();
                 }).catch(function(error){
             
                 })
@@ -30,7 +36,6 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
                         if(i==$scope.img.length-1){
                             ordemService.analizar($scope.pedido.id,ordemAtualizada).then(function(data){
                                 $location.path("/listarPedidos");
-                                $location.replace();
                             }).catch(function(error){
                         
                             })
@@ -48,7 +53,6 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
     $scope.finalizar=function(){
         ordemService.finalizar($scope.pedido.id).then(function(data){
 			$location.path("/listarPedidos");
-            $location.replace();
         }).catch(function(){
             
         })
@@ -102,7 +106,6 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
     $scope.recusar=function(id){
         ordemService.recusar(id).then(function (data) {
 			$location.path("/listarPedidos");
-            $location.replace();
 		}).catch(function(){
             
         });
@@ -110,7 +113,6 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
     $scope.cancelar=function(id){
         ordemService.cancelar(id).then(function (data) {
 			$location.path("/listarPedidos");
-            $location.replace();
 		}).catch(function(){
             
         });
@@ -124,6 +126,5 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
     }
     $scope.voltar=function(){
         $location.path("/listarPedidos");
-            $location.replace();
     }
 });

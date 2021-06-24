@@ -50,6 +50,10 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$rou
             return true;
         }
     }
+    $scope.menu=function(){
+        $location.path("/menu");
+        $location.replace();
+    }
     $scope.usuario=function(){
         let user=storageAPI.getLocalUser();
         if(user==null){

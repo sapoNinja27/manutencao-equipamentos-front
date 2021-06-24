@@ -3,7 +3,7 @@ angular.module("sistemaManutencao").factory("errorInterceptor", function ($q,$lo
 		responseError: function (rejection,$route) {
 
 			if (rejection.status === 400) {
-				alert("Não é possivel excluir um cliente com pedidos em aberto")
+				alert("Não é possivel realizar essa ação")
 			}else if(rejection.status==401){
 				alert("Credencial incorreta")
 			}else if(rejection.status==403){

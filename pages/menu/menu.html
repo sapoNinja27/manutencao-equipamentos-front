@@ -4,7 +4,7 @@
 				{{pagina}}
 			</label>
 			<div class="user">
-				<a href="" ng-click="perfil()" class="username">
+				<a href="" ng-click="perfil()" title="Aperte para editar o seu perfil de usuario" class="username">
 					{{usuario()}} 
 				</a>
 				<label title="{{descricao}}">
@@ -12,11 +12,16 @@
 				</label>
 			</div>
 			<label for="icone">
-				<img style="border-radius: 50px;" class="icon" src="{{imagem()}}"></img>
+				<img style="border-radius: 50px;" title="Aperte para mudar a imagem de icone" class="icon" src="{{imagem()}}"></img>
 			</label>
-			<a href="" ng-click="deslogar()" class="sair">
-				Sair
-			</a>
+			<div  class="menu-sair">
+				<a href="" ng-click="menu()" title="Voltar ao menu principal" class="menu">
+					Menu
+				</a>
+				<a href="" ng-click="deslogar()" title="Sair do apliicativo" class="menu sair">
+					Sair
+				</a>
+			</div>
 	</div>
 	<input data-file-upload="true" id="icone" ng-model="img" ng-show="false" type="file"></input>
 </div>

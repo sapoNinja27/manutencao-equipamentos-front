@@ -5,6 +5,9 @@ angular.module("sistemaManutencao").service("ordemService", function ($http, con
 	this.getOrdens = function () {
 		return $http.get(config.baseUrl + "/ordens");
 	};
+	this.getOrdensByCliente = function (id) {
+		return $http.get(config.baseUrl + "/ordens/cliente/"+id);
+	};
 	this.getOrdem = function (id) {
 		return $http.get(config.baseUrl + "/ordens/"+id);
 	};
