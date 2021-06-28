@@ -1,4 +1,4 @@
-angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$route, $location,storageAPI) {
+angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$route,usuarioService, $location,storageAPI,localUserAPI) {
     $scope.home=function(){
         if($location.path()=="/home"){
             return false
@@ -49,6 +49,22 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$rou
             }
             return true;
         }
+    }
+    $scope.upload=function(){
+        let icon= $scope.img[0];
+        let user=storageAPI.getLocalUser();
+        usuarioService.uploadPicture(user.id,icon)
+            .then(function(data){
+                usuarioService.getUsuarioById(user.id).then(function(data){
+                    console.log(data)
+                    localUserAPI.atualizarImagem(data.data.imagem)
+                    $scope.img=null;
+                    $route.reload();
+                })
+            })
+            .catch(function(error){
+                console.log(error)
+            })
     }
     $scope.menu=function(){
         $location.path("/menu");

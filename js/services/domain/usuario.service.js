@@ -11,7 +11,7 @@ angular.module("sistemaManutencao").service("usuarioService", function ($http, c
 		return $http.get(config.baseUrl + "/usuarios/");
 	};
 	this.attCargo = function (id,cargos) {
-		return $http.put(config.baseUrl + "/usuarios/"+id+"/cargos/",cargos);
+		return $http.put(config.baseUrl + "/usuarios/cargos/"+id+"",cargos);
 	};
 	this.excluir = function (id) {
 		return $http.delete(config.baseUrl + "/usuarios/"+id);
