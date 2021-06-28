@@ -18,6 +18,7 @@ angular.module("sistemaManutencao").controller("tabelaPedidosPageCtrl", function
         $scope.campo=campo;
         $scope.direcao=!$scope.direcao;
     }
+    //verifica quem pode ver oq nas tabelas
     $scope.show=function(estado){
         let show=false;
         if(user=="ADMIN" || user=="RECEPCIONISTA"){

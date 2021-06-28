@@ -29,7 +29,7 @@ angular.module("sistemaManutencao").service("usuarioService", function ($http, c
 			transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).catch(function(error){
-			console.log(error)
+			
 		});
 	};
 });

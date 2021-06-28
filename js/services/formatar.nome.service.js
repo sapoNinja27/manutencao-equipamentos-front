@@ -1,3 +1,4 @@
+//adiciona 1 letra maiuscula e a partir de 1 espaço, impede adição de valores invalidos
 angular.module("sistemaManutencao").service("formatadorAPI", function () {
     this.formatar=function (frase) {
         frase=frase.replace(/[^A-Za-z çâêîôûãõ]+/g, "");

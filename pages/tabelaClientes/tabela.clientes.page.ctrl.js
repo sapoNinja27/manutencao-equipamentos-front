@@ -32,6 +32,7 @@ angular.module("sistemaManutencao").controller("tabelaClientesPageCtrl", functio
     $scope.orderByNome=function(){
       $scope.direcao=!$scope.direcao;
     }
+    //define o css para quando o mouse tiver em cima ou clicou
     $scope.style=function(index){
       let value = "item"
       if(!clicked){

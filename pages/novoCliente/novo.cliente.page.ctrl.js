@@ -1,4 +1,5 @@
 angular.module("sistemaManutencao").controller("novoClientePageCtrl", function ($scope,formatadorAPI, $location,clienteService) {
+    //comentarios das funçoes iguais aos da pagina cliente
     $scope.nome;
     $scope.rg;
     $scope.cpf;

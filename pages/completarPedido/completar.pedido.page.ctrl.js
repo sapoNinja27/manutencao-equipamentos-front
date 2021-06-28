@@ -1,14 +1,8 @@
 angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope, $location,pedido,ordemService,storageAPI) {
-    // $scope.$on('$routeChangeStart', function(event, next, current) {
-    //     let param =JSON.stringify($location.search())
-	// 			if(param!="{}"){
-	// 				param=param.split('"')[1]
-    //                 // $location.path("/listarPedidos").search("p")
-    //             }
-    // });
     $scope.pedido=pedido.data;
     $scope.analize="";
     let user=storageAPI.getLocalUser().perfil;
+    //apenas é nescessario preencher um valor, se ouver imagens antes de enviar o relatorio é enviado as imagens e entao o relatorio dentro da sua funçao then
     $scope.enviar=function(){
         let ordemAtualizada={
             "problemasExtras":"Sem avarias extras",
@@ -42,7 +36,7 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
                         }
                     })
                     .catch(function(error){
-                        console.log(error)
+                        
                     })
                 }
             }
@@ -57,6 +51,31 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
             
         })
     }
+    $scope.recusar=function(id){
+        ordemService.recusar(id).then(function (data) {
+			$location.path("/listarPedidos");
+		}).catch(function(){
+            
+        });
+    }
+    $scope.cancelar=function(id){
+        ordemService.cancelar(id).then(function (data) {
+			$location.path("/listarPedidos");
+		}).catch(function(){
+            
+        });
+    }
+    $scope.valorF=function(){
+        $scope.valor=$scope.valor.replace(/[^0-9]+/g,"")
+    }
+    $scope.expandir=function(url){
+        $scope.imgShow=true;
+        $scope.ImagemGrande=url;
+    }
+    $scope.voltar=function(){
+        $location.path("/listarPedidos");
+    }
+    //funçoes que retornam a visibilidade possivel de açoes para cada cargo
     $scope.analista=function(){
         let show=false;
         if(user=="ADMIN" || user=="ANALISTA"){
@@ -105,29 +124,5 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
             show=false;
         }
         return show;
-    }
-    $scope.recusar=function(id){
-        ordemService.recusar(id).then(function (data) {
-			$location.path("/listarPedidos");
-		}).catch(function(){
-            
-        });
-    }
-    $scope.cancelar=function(id){
-        ordemService.cancelar(id).then(function (data) {
-			$location.path("/listarPedidos");
-		}).catch(function(){
-            
-        });
-    }
-    $scope.valorF=function(){
-        $scope.valor=$scope.valor.replace(/[^0-9]+/g,"")
-    }
-    $scope.expandir=function(url){
-        $scope.imgShow=true;
-        $scope.ImagemGrande=url;
-    }
-    $scope.voltar=function(){
-        $location.path("/listarPedidos");
     }
 });

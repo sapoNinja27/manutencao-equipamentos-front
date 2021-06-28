@@ -10,6 +10,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.equipamento="";
     $scope.problemas="";
     $scope.invalido=false;
+    //antes de enviar é checado se tem um equipamento ou marca novos, e eles sao enviados primeiro
     $scope.adicionar=function(){
         let cli=null;
         for(let i=0;i<$scope.clientes.length;i++){
@@ -55,7 +56,6 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         if(ordem.cliente!=null){
             if(ordem.marca!="" || ordem.equipamento!=""){
                 if($scope.problemas.length>=10){
-                    console.log(ordem)
                     ordemService.addOrdem(ordem).then(function (data) {
                         alert("Adicionado!!");
                         $location.path("/menu");
@@ -107,6 +107,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         }
     }
     //campos cliente
+    //verificações para a funcionalidade da barrinha de pesquisa
     $scope.selecionar=function(nome) {
         $scope.nome=nome;
         $scope.show=false;

@@ -1,5 +1,6 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,storageAPI) {
     $scope.user=storageAPI.getLocalUser();
+    //se o usuario nao for adm nem rec vai ser mandado direto pras tabelas de pedidos
     if( $scope.user.perfil!="ADMIN"){
         let rec=false
         $scope.user.perfil.forEach(perfil => {
@@ -26,6 +27,7 @@ angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope,
     $scope.configurarUser=function(){
         $location.path("/configUser");
     }
+    //checa o acesso do usuario para evitar que a pagina possa ser acessada pelo link
     $scope.acessoRestrito=function(){
         let aprovado = false;
         if($scope.user.perfil=="ADMIN"){

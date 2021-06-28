@@ -1,3 +1,4 @@
+//filtra o valor para um cpf
 angular.module("sistemaManutencao").filter("cpf", function () {
 	return function (input) {
 		cpf=input.replace(/[^0-9]+/g, "");

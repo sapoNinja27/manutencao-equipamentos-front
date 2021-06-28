@@ -1,5 +1,7 @@
 angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,$location,pesquisaAPI,storageAPI,$route,usuarios,usuarioService) {
     var analize=false;
+    //funçao para prevenir que o botao de voltarleve para o menu principal se a tela de alterar usuario estiver aberta
+    //ao invez disso ele voltara para a tela de listar usuarios
     $scope.$on('$routeChangeStart', function(event, next, current) {
         if(next.originalPath=="/menu"){
             if(analize){
@@ -113,6 +115,7 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
         }
         cargos=cargosNormais;
     }
+    //funçao para previnir que o adm tenha mais de um cargo
     $scope.attAdm=function(){
         $scope.adm=!$scope.adm
         cargos=[]
@@ -122,6 +125,7 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
             cargos=cargosNormais;
         }
     }
+    //aqui é feita uma configuraçao para receber os novos cargos
     $scope.att=function(){
         let numCargos=[];
         for(let i=0;i<cargos.length;i++){

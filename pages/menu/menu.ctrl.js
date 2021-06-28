@@ -1,4 +1,5 @@
 angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$route,usuarioService, $location,storageAPI,localUserAPI) {
+    //os valores da pagina estao protegidos com a verificação de se o usuario estiver vazio, para evitar a quebra da aplicação caso de algum erro
     $scope.home=function(){
         if($location.path()=="/home"){
             return false
@@ -56,19 +57,14 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$rou
         usuarioService.uploadPicture(user.id,icon)
             .then(function(data){
                 usuarioService.getUsuarioById(user.id).then(function(data){
-                    console.log(data)
                     localUserAPI.atualizarImagem(data.data.imagem)
                     $scope.img=null;
                     $route.reload();
                 })
             })
             .catch(function(error){
-                console.log(error)
+                
             })
-    }
-    $scope.menu=function(){
-        $location.path("/menu");
-        $location.replace();
     }
     $scope.usuario=function(){
         let user=storageAPI.getLocalUser();
@@ -85,6 +81,10 @@ angular.module("sistemaManutencao").controller("menuCtrl", function ($scope,$rou
             return "res/logo.png"
         }
         return user.imagem
+    }
+    $scope.menu=function(){
+        $location.path("/menu");
+        $location.replace();
     }
     $scope.deslogar=function(){
         $location.path("/home");

@@ -1,3 +1,4 @@
+//filtra um valor para rg
 angular.module("sistemaManutencao").filter("rg", function () {
 	return function (input) {
 		rg=input.replace(/[^0-9]+/g, "");

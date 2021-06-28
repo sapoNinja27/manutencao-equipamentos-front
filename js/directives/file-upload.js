@@ -1,3 +1,4 @@
+//diretiva criada para atualizar o icone do usuario no change da imagem, não esta sendo utilizada pois da de usar a diretiva geral de ng model pra isso
 angular.module("sistemaManutencao").directive('fileUpload', function(usuarioService,storageAPI,localUserAPI) {
   return {
       require:"ngModel",

@@ -15,6 +15,7 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
     $scope.pedidos=function(){
         $location.path("/listarPedidos").search($scope.cliente.id);
     }
+    //envia o cliente baseado em dados novos ou antigos
     $scope.enviar=function(){
         let newCliente={
             email: "",
@@ -53,6 +54,7 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
         if($scope.telefone==""||$scope.telefone==null){
             newCliente.telefone=$scope.cliente.telefone;
         }
+        //aqui diferente do cadastro o alerta so vai ativar se algum campo foi modificado e deixado errado, campos undefined nao vao ativar
         if(alerta){
             alert("Preencha corretamente todos os campos");
          }else{
@@ -63,6 +65,7 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
             });
          }
     }
+    //verificação generica de campo incorreto curto demais
     $scope.campoIncorreto=function(palavra, max){
         if(palavra==undefined){
             return false;
@@ -75,6 +78,7 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
             return false;
         }
     }
+    //função generica que vai atualizar os valores de acordo com o campo que estiver digitado
     $scope.format=function(){
         if($scope.nome!=undefined){
             formatNome();
@@ -118,6 +122,7 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
     var formatCidade=function(){
         $scope.cidade=formatadorAPI.formatar( $scope.cidade);
     }
+    //faz uma validação simples de email, com um templade de 4 palavras + @ + 4 palvras + . + 2 palavras
     $scope.validarEmail=function(){
         palavra=$scope.email;
         if(palavra!=undefined){

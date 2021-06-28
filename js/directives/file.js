@@ -1,3 +1,4 @@
+//diretiva aplica ng model a input file
 angular.module("sistemaManutencao").directive('file', function() {
   return {
       require:"ngModel",
