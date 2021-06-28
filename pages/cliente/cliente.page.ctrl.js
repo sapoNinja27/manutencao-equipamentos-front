@@ -57,9 +57,9 @@ angular.module("sistemaManutencao").controller("clientePageCtrl", function (form
             alert("Preencha corretamente todos os campos");
          }else{
             clienteService.update(newCliente,$scope.cliente.id).then(function (data) {
-                $location.path("/menu");
+                $location.path("/listarClientes");
             }).catch(function(error){
-                console.log(error)
+                
             });
          }
     }

@@ -32,6 +32,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                 ordem.marca=novaMarca.nome;
                 ordem.equipamento=novaMarca.equipamento;
                 sendOrdem(ordem);
+            }).catch(function(){
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento=="Novo"){
@@ -42,6 +43,8 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             equipamentoService.addEquipamento(novoEquipamento).then(function (data) {
                 ordem.equipamento=novoEquipamento.nome;
                 sendOrdem(ordem);
+            }).catch(function(){
+                    
             });
         }
         if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
@@ -52,6 +55,7 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         if(ordem.cliente!=null){
             if(ordem.marca!="" || ordem.equipamento!=""){
                 if($scope.problemas.length>=10){
+                    console.log(ordem)
                     ordemService.addOrdem(ordem).then(function (data) {
                         alert("Adicionado!!");
                         $location.path("/menu");

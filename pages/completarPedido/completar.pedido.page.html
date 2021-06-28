@@ -60,9 +60,6 @@
                 <button class="excluir"  ng-click="recusar(pedido.id)">
                     Recusar
                 </button>
-                <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">
-                    Cancelar
-                </button>
                 <button class="excluir"  ng-click="voltar()">
                     Voltar
                 </button>
@@ -84,6 +81,9 @@
             </div>
             <button class="entrar" ng-if="tecnico()"  ng-click="finalizar()">
                 Finalizar
+            </button>
+            <button ng-if="secretaria()" class="excluir"  ng-click="cancelar(pedido.id)">
+                Cancelar o pedido
             </button>
             <button class="excluir" ng-show="!analista()"  ng-click="voltar()">
                 Voltar

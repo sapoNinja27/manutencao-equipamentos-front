@@ -28,7 +28,7 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
         }
     }
     var formatNome=function(){
-        $scope.nome=formatadorAPI.formatar( $scope.nome);
+        $scope.nome=formatadorAPI.formatar($scope.nome);
     }
     var formatRg=function(){
         rg=$scope.rg.replace(/[^0-9]+/g, "");
@@ -89,20 +89,20 @@ angular.module("sistemaManutencao").controller("novoClientePageCtrl", function (
         $scope.cidade=formatadorAPI.formatar( $scope.cidade);
     }
 	$scope.adicionar=function(){
-        let cpf=$scope.cpf.replace(/[^0-9]+/g, "");
-        let rg=$scope.rg.replace(/[^0-9]+/g, "");
-         let newCliente={
-            "nome": $scope.nome,
-            "telefone": $scope.telefone,
-            "rg":rg,
-            "email": $scope.email,
-            "cpf": cpf,
-            "bairro": $scope.bairro,
-            "cidade": $scope.cidade
-         }
          if(alerta){
             alert("Preencha corretamente todos os campos");
          }else{
+            let cpf=$scope.cpf.replace(/[^0-9]+/g, "");
+            let rg=$scope.rg.replace(/[^0-9]+/g, "");
+            let newCliente={
+                "nome": $scope.nome,
+                "telefone": $scope.telefone,
+                "rg":rg,
+                "email": $scope.email,
+                "cpf": cpf,
+                "bairro": $scope.bairro,
+                "cidade": $scope.cidade
+            }
             clienteService.addCliente(newCliente).then(function (data) {
                 alert("Adicionado!!");
                 $location.path("/menu");

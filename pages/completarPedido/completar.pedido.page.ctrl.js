@@ -88,6 +88,9 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         }else  if(user=="ANALISTA"||user=="TECNICO"){
             show=false;
         }
+        if($scope.pedido.state=="MANUTENCAO_PENDENTE"){
+            show=false;
+        }
         if($scope.pedido.state=="CANCELADO"){
             show=false;
         }
