@@ -81,6 +81,9 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         }
         return show;
     }
+    $scope.teste=function(){
+        console.log("?")
+    }
     $scope.secretaria=function(){
         let show=false;
         if(user=="ADMIN" || user=="RECEPCIONISTA"){

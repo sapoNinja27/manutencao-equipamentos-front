@@ -25,9 +25,11 @@ angular.module("sistemaManutencao").service("usuarioService", function ($http, c
 	this.uploadPicture = function (id,image) {
 		var fd = new FormData();
         fd.append('file', image);
-        return $http.post(config.baseUrl + "/usuarios/"+id+"/imagens", fd, {
+        return $http.post(config.baseUrl + "/usuarios/imagem/"+id, fd, {
 			transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
-        });
+        }).catch(function(error){
+			console.log(error)
+		});
 	};
 });

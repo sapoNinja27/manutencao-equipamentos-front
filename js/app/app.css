@@ -44,7 +44,6 @@ h1{
     margin-bottom: 20px;
     font-family: Calibri;
 }
-
 /* botoes */
 .excluir{
     margin-bottom:1px;
@@ -79,9 +78,6 @@ h1{
 .entrar:active{
     background-color: rgb(79, 110, 138);
 }
-
-
-
 /* menu bar */
 .menu-sair{
     display: flex;
