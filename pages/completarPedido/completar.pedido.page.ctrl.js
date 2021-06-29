@@ -1,6 +1,10 @@
-angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope, $location,pedido,ordemService,storageAPI) {
+angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", function ($scope,cargoService, $location,pedido,ordemService,storageAPI) {
     $scope.pedido=pedido.data;
     $scope.analize="";
+    let cargos
+    cargoService.getCargos().then(function(data){
+        cargos =data.data;
+    });
     let user=storageAPI.getLocalUser().perfil;
     //apenas é nescessario preencher um valor, se ouver imagens antes de enviar o relatorio é enviado as imagens e entao o relatorio dentro da sua funçao then
     $scope.enviar=function(){
@@ -66,7 +70,19 @@ angular.module("sistemaManutencao").controller("completarPedidoPageCtrl", functi
         });
     }
     $scope.valorF=function(){
-        $scope.valor=$scope.valor.replace(/[^0-9]+/g,"")
+        $scope.valor=$scope.valor.replace(/[^0-9,.]+/g,"")
+        // let val=$scope.valor;
+        // let tam= val.length;
+        // if(val.length>3){
+        //     val=val.substring(0,3)+"."+val.substring(3);
+        // }
+        // for(let i=0,j=0;i<tam;i++,j++){
+        //     if(j==3){
+        //         j=0;
+        //         val=val.substring(0,1)+"."+val.substring(1);
+        //     }
+        // }
+		// $scope.valor=val;
     }
     $scope.expandir=function(url){
         $scope.imgShow=true;

@@ -1,15 +1,17 @@
 angular.module("sistemaManutencao").controller("menuPageCtrl", function ($scope, $location,storageAPI) {
     $scope.user=storageAPI.getLocalUser();
     //se o usuario nao for adm nem rec vai ser mandado direto pras tabelas de pedidos
-    if( $scope.user.perfil!="ADMIN"){
-        let rec=false
-        $scope.user.perfil.forEach(perfil => {
-            if(perfil=="RECEPCIONISTA"){
-                rec=true;
+    if($scope.user.perfil==null || $scope.user.perfil=="" || $scope.user.perfil==undefined){
+        if( $scope.user.perfil!="ADMIN"){
+            let rec=false
+            $scope.user.perfil.forEach(perfil => {
+                if(perfil=="RECEPCIONISTA"){
+                    rec=true;
+                }
+            });
+            if(!rec){
+                $location.path("/listarPedidos");
             }
-        });
-        if(!rec){
-            $location.path("/listarPedidos");
         }
     }
     $scope.novoPedido=function(){

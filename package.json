@@ -1,0 +1,19 @@
+{
+  "name": "sistemademanutencao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "http-server ./ -a localhost -p 8081",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.services.betha.cloud/joao.ronzani/sistemamanutencaofrontend.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,6 +1,6 @@
 angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($scope,$location,pesquisaAPI,storageAPI,$route,usuarios,usuarioService) {
     var analize=false;
-    //funçao para prevenir que o botao de voltarleve para o menu principal se a tela de alterar usuario estiver aberta
+    //funçao para prevenir que o botao de voltar leve para o menu principal se a tela de alterar usuario estiver aberta
     //ao invez disso ele voltara para a tela de listar usuarios
     $scope.$on('$routeChangeStart', function(event, next, current) {
         if(next.originalPath=="/menu"){
@@ -75,6 +75,7 @@ angular.module("sistemaManutencao").controller("configUserPageCtrl", function ($
           clicked=false;
       }
     $scope.novoUsuario=function(){
+        analize=true;
         $scope.adicionando=true;
     }
     $scope.tabela=function(){
