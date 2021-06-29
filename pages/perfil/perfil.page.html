@@ -1,19 +1,6 @@
 <div>
     <div class="box" >
-        <select>
-            <option ng-show="clicked">
-                Selecione uma opção
-            </option>
-            <option ng-click="selecionou(1)">
-                Senha
-            </option>
-            <option ng-click="selecionou(2)">
-                Nome
-            </option>
-            <option ng-click="selecionou(3)">
-                Nome De Usuario
-            </option>
-        </select>
+        <select ng-options="opcao as opcao.name for opcao in opcoes track by opcao.id" ng-model="selected" ng-change="selecionou()"></select>
     </div>
     <div class="box" >
         <form class="form" ng-if="mudarSenha">

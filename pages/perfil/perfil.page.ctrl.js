@@ -4,8 +4,39 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
         $location.path("/menu");
         $location.replace();
     }
-    $scope.selecionou=function(selected){
-        $scope.clicked=false;
+    $scope.opcoes = [{
+        id: 0,
+        name: 'Selecione uma opção',
+        visible: $scope.clicked
+      }, {
+        id: 1,
+        name: 'Senha',
+        visible:true
+      }, {
+        id: 2,
+        name: 'Nome',
+        visible: true
+      }, {
+        id: 3,
+        name: 'Nome De Usuario',
+        visible: true
+      }];
+    $scope.selected = $scope.opcoes[0];
+    $scope.selecionou=function(){
+        selected=$scope.selected.id;
+        $scope.opcoes = [{
+            id: 1,
+            name: 'Senha',
+            visible:true
+          }, {
+            id: 2,
+            name: 'Nome',
+            visible: true
+          }, {
+            id: 3,
+            name: 'Nome De Usuario',
+            visible: true
+          }];
         if(selected==1){
             $scope.mudarSenha=true;
             $scope.mudarUsuario=false;
