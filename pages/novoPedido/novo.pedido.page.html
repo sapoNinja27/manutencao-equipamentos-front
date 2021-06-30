@@ -20,20 +20,18 @@
                     <label>
                         Marca
                     </label>
-                    <select ng-model="marca">
-                        <option ng-repeat="marca in marcas" ng-click="atualizarEquipamentos(marca.nome)">{{marca.nome}}</option>
-                        <option ng-click="atualizarEquipamentos()">Novo</option>
-                    </select>
+                    <select ng-options="marca as marca.nome for marca in marcas track by marca.id" ng-model="marca" ng-change="atualizarEquipamentos()"></select>
                     <input type="text" ng-show="novo('marca')" ng-model="marcaNew"></input>
                 </div>
                 <div class="sub">
                     <label>
                         Equipamento 
                     </label>
-                    <select ng-model="equipamento">
+                    <select ng-options="equipamento as equipamento.nome for equipamento in newEquipamento track by equipamento.id" ng-model="equipamento"></select>
+                    <!-- <select ng-model="equipamento">
                         <option ng-repeat="equipamento in newEquipamento">{{equipamento.nome}}</option>
                         <option>Novo</option>
-                    </select>
+                    </select> -->
                     <input type="text" ng-show="novo('equipamento')" ng-model="equipamentoNew"></input>
                 </div>
             </div>

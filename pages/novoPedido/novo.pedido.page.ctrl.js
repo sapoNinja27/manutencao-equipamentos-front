@@ -2,6 +2,10 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.clientes=clientes.data;
     $scope.equipamentos=equipamentos.data;
     $scope.marcas=marcas.data;
+    $scope.marcas[$scope.marcas.length] = {
+        id: $scope.marcas.length+1,
+        nome:"Novo"
+    }
     $scope.newEquipamento=[];
     $scope.pdeFechar=true;
     $scope.clientesFiltrados=$scope.clientes;
@@ -12,6 +16,8 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
     $scope.invalido=false;
     //antes de enviar é checado se tem um equipamento ou marca novos, e eles sao enviados primeiro
     $scope.adicionar=function(){
+        let marca=$scope.marca.nome;
+        let equip=$scope.equipamento.nome;
         let cli=null;
         for(let i=0;i<$scope.clientes.length;i++){
             if($scope.clientes[i].nome==$scope.nome){
@@ -19,12 +25,12 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             }
         }
         ordem={
-            equipamento: $scope.equipamento,
-            marca:$scope.marca,
+            equipamento: $scope.equipamento.nome,
+            marca:$scope.marca.nome,
             problema:$scope.problemas,
             cliente:cli
         }
-        if($scope.marca=="Novo"){
+        if($scope.marca.nome=="Novo"){
             let novaMarca={
                 nome:$scope.marcaNew,
                 equipamento: $scope.equipamentoNew
@@ -36,10 +42,10 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             }).catch(function(){
             });
         }
-        if($scope.marca!="Novo" && $scope.equipamento=="Novo"){
+        if($scope.marca.nome!="Novo" && $scope.equipamento.nome=="Novo"){
             let novoEquipamento={
                 nome:$scope.equipamentoNew,
-                marca: $scope.marca
+                marca: $scope.marca.nome
             }
             equipamentoService.addEquipamento(novoEquipamento).then(function (data) {
                 ordem.equipamento=novoEquipamento.nome;
@@ -48,11 +54,12 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
                     
             });
         }
-        if($scope.marca!="Novo" && $scope.equipamento!="Novo"){
+        if($scope.marca.nome!="Novo" && $scope.equipamento.nome!="Novo"){
             sendOrdem(ordem);
         }
     }
     var sendOrdem=function(ordem){
+        console.log(ordem)
         if(ordem.cliente!=null){
             if(ordem.marca!="" || ordem.equipamento!=""){
                 if($scope.problemas.length>=10){
@@ -72,7 +79,8 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
             alert("Cliente Invalido")
         }
     }
-    $scope.atualizarEquipamentos=function(marca){
+    $scope.atualizarEquipamentos=function(){
+        marca=$scope.marca.nome;
         let equipamento=""
         $scope.newEquipamento=[];
         for(let i=0;i<$scope.equipamentos.length;i++){
@@ -82,18 +90,25 @@ angular.module("sistemaManutencao").controller("novoPedidoPageCtrl", function ($
         }
         let equips=equipamento.split(":");
         for(let i=1;i<equips.length;i++){
-            $scope.newEquipamento[i-1]={nome:equips[i]}
+            $scope.newEquipamento[i-1]={
+                id:i-1,
+                nome:equips[i]
+            }
+        }
+        $scope.newEquipamento[$scope.newEquipamento.length]={
+            id:$scope.newEquipamento.length,
+            nome:"Novo"
         }
     }
     //checar se vai adicionar nova marca ou equipamento
     $scope.novo=function(item){
         if(item=="marca"){
-            if($scope.marca=="Novo"){
+            if($scope.marca.nome=="Novo"){
                 return true;
             }
         }
         if(item=="equipamento"){
-            if($scope.equipamento=="Novo"){
+            if($scope.equipamento.nome=="Novo"){
                 return true;
             }
         }

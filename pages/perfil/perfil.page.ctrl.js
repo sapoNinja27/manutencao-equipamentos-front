@@ -6,20 +6,16 @@ angular.module("sistemaManutencao").controller("perfilPageCtrl", function ($scop
     }
     $scope.opcoes = [{
         id: 0,
-        name: 'Selecione uma opção',
-        visible: $scope.clicked
+        name: 'Selecione uma opção'
       }, {
         id: 1,
-        name: 'Senha',
-        visible:true
+        name: 'Senha'
       }, {
         id: 2,
-        name: 'Nome',
-        visible: true
+        name: 'Nome'
       }, {
         id: 3,
-        name: 'Nome De Usuario',
-        visible: true
+        name: 'Nome De Usuario'
       }];
     $scope.selected = $scope.opcoes[0];
     $scope.selecionou=function(){
