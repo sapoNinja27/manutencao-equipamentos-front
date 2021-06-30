@@ -1,5 +1,5 @@
 angular.module("sistemaManutencao").config(function ($routeProvider,$locationProvider) {
-	$locationProvider.hashPrefix('SistemaManutencao');
+	$locationProvider.hashPrefix('');
 	$routeProvider.when("/home", {
 		templateUrl: "pages/home/home.page.html",
 		controller: "homePageCtrl",
@@ -229,5 +229,9 @@ angular.module("sistemaManutencao").config(function ($routeProvider,$locationPro
 			}
 		}
 	});
+    $locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+ });
 	$routeProvider.otherwise({redirectTo: "/home"});
 });
